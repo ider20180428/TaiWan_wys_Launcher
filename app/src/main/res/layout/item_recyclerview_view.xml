@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+<FrameLayout
+    android:layout_width="180dp"
+    android:layout_height="238dp"
+    android:layout_margin="10dp"
+    android:background="#383a42"
+    android:focusable="false">
+
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitXY"
+        android:focusable="false"
+         />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/w_10"
+        android:gravity="left"
+        android:layout_marginTop="180dp"
+        android:text="item1"
+        android:focusable="false"
+        android:textColor="#cccccc"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/app_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginLeft="@dimen/w_10"
+        android:layout_marginBottom="@dimen/w_10"
+        android:focusable="false"
+        android:gravity="left"
+        android:text="大小:500M"
+        android:textColor="#65666c"
+        android:textSize="15sp" />
+    <FrameLayout
+        android:id="@+id/select_view"
+        android:layout_width="match_parent"
+        android:background="#80000000"
+        android:alpha="0"
+        android:focusable="false"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn_open"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h_55"
+            android:gravity="center"
+            android:background="@drawable/login_button_selector"
+            android:text="@string/openapp"
+            android:nextFocusLeft="@+id/btn_uninstall"
+            android:nextFocusRight="@+id/btn_uninstall"
+            android:nextFocusUp="@+id/btn_uninstall"
+            android:nextFocusDown="@+id/btn_uninstall"
+            android:focusable="false"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:layout_marginTop="75dp"
+            />
+        <Button
+            android:id="@+id/btn_uninstall"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h_55"
+            android:gravity="center"
+            android:text="@string/delete"
+            android:nextFocusLeft="@+id/btn_uninstall"
+            android:nextFocusRight="@+id/btn_uninstall"
+            android:background="@drawable/uninstall_button_selector"
+            android:nextFocusUp="@+id/btn_open"
+            android:nextFocusDown="@+id/btn_uninstall"
+            android:focusable="false"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:layout_marginTop="119dp"
+            />
+    </FrameLayout>
+</FrameLayout>
+</RelativeLayout>

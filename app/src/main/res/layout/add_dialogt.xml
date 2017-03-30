@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tv="http://schemas.android.com/apk/res/com.zxy.wtlauncher"
+    android:layout_width="1300dp"
+    android:layout_height="390dp"
+    android:layout_marginTop="200dp"
+    >
+
+   <com.zxy.wtlauncher.view.TvMarqueeText
+        android:id="@+id/mt_title"
+        android:layout_width="@dimen/px500"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/px100"
+        android:textSize="@dimen/px50"
+        android:textColor="@android:color/holo_red_light"
+        tv:period="10"
+        tv:text="@string/add_app"
+        tv:vague="true"
+        />
+   
+   <com.zxy.wtlauncher.view.TvHorizontalGridView
+        android:id="@+id/tgv_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/px30"
+        android:layout_marginTop="@dimen/px250"
+        tv:cursorRes="@drawable/cursor_rectangle_boarder_orange"
+        tv:itemWidth="@dimen/px400"
+        tv:itemHeight="@dimen/px400"
+        tv:rows="1"
+        tv:paddingLeft="@dimen/px31"
+        tv:paddingTop="@dimen/px21"
+        tv:animationType="TRANSLATE"
+       />
+
+</RelativeLayout>

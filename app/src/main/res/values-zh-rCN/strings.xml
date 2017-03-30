@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WTLauncher</string>
+    <string name="action_settings">Settings</string>
+	<string name="add">添加应用</string>
+	<drawable name="clr_normal">#c80808</drawable>
+    <drawable name="clr_pressed">#2ba3ff</drawable>
+    <string name="CleanMaster">一键加速</string>
+    <string name="CleanedMemory">已清理 ：%1$s MB 当前可用内存为：%2$s M</string>
+    <string name="add_app">请选择喜欢的应用!!!!!!</string>
+    <string name="tip_app">长按OK删除应用，点击“+”添加应用!!!!!!</string>
+    <string name="openapp">打开</string>
+     <string name="delete">删除</string>
+     <string name="install_title">正在安裝應用程序，請稍候…(%1$d/%2$d)</string>
+    <string name="install_success">安裝成功，按任意鍵使用.</string>
+</resources>
