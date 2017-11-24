@@ -116,7 +116,7 @@
     >
     <com.zxy.wtlauncher.view.LauncherItem
         android:id="@+id/launcher_item1"
-        android:layout_width="200dp" 
+        android:layout_width="200dp"
         android:layout_height="200dp"
         android:background="@drawable/bg1"
         android:layout_alignParentLeft="true"
@@ -129,7 +129,7 @@
     
     <com.zxy.wtlauncher.view.LauncherItem
         android:id="@+id/launcher_item2"
-        android:layout_width="200dp" 
+        android:layout_width="200dp"
         android:layout_height="200dp"
         android:background="@drawable/bg2"
         android:layout_toRightOf="@+id/launcher_item1"
@@ -251,7 +251,79 @@
     
 </com.zxy.wtlauncher.view.TvRelativeLayoutAsGroup>
 
+    <com.zxy.wtlauncher.view.TvRelativeLayoutAsGroup
+        android:id="@+id/launcher_itemsb"
+        android:layout_width="1068dp"
+        android:layout_height="448dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:clipToPadding="false"
+        android:paddingTop="20dp"
+        android:paddingLeft="10dp"
+        ider:animationType="TRANSLATE"
+        ider:durationTranslate="1"
+        ider:boarderInt="15"
+        ider:scale="1.1"
+        ider:cursorRes="@drawable/flyimg"
+        >
+    <com.zxy.wtlauncher.view.LauncherItem
+        android:id="@+id/launcher_item_b1"
+        android:layout_width="410dp"
+        android:layout_height="410dp"
+        android:background="@drawable/bg1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="78dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:tag="11"
+        />
 
+    <com.zxy.wtlauncher.view.LauncherItem
+        android:id="@+id/launcher_item_b2"
+        android:layout_width="410dp"
+        android:layout_height="410dp"
+        android:background="@drawable/bg1"
+        android:layout_toRightOf="@+id/launcher_item_b1"
+        android:layout_marginLeft="28dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:tag="12"
+        />
+    </com.zxy.wtlauncher.view.TvRelativeLayoutAsGroup>
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:gravity="center">
+        <com.zxy.wtlauncher.view.MyText
+            android:id="@+id/movie_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:focusable="true"
+            android:textColor="#deeeff"
+            android:text="@string/movie"
+            android:nextFocusLeft="@+id/adult_text"
+            android:background="@drawable/mode_back"/>
+        <com.zxy.wtlauncher.view.MyText
+            android:id="@+id/adult_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:focusable="true"
+            android:textColor="#deeeff"
+            android:text="@string/adult"
+            android:nextFocusRight="@+id/movie_text"
+            android:background="@drawable/mode_back"/>
+    </LinearLayout>
     <com.zxy.wtlauncher.view.TvMarqueeText
         android:id="@+id/mt_tip"
         android:layout_width="@dimen/px500"
@@ -260,9 +332,22 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
         android:textSize="@dimen/px60"
+        android:visibility="gone"
         android:textColor="@color/white"
         ider:period="10"
         ider:text="@string/tip_app"
+        ider:vague="true"
+        />
+    <com.zxy.wtlauncher.view.TvMarqueeText
+        android:id="@+id/address_tip"
+        android:layout_width="@dimen/px500"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/px60"
+        android:textColor="@color/white"
+        ider:period="10"
+        ider:text="@string/address_tip"
         ider:vague="true"
         />
  

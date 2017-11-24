@@ -1,14 +1,13 @@
 package com.zxy.wtlauncher.applist;
 
-import com.zxy.wtlauncher.R;
-
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Handler;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,6 +16,8 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.zxy.wtlauncher.R;
 
 
 public class AppsActivity extends Activity implements AppLicationViewDao.updateView {
@@ -88,7 +89,30 @@ public class AppsActivity extends Activity implements AppLicationViewDao.updateV
                 return true;
             }
         });
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
+        registerReceiver(mHomeKeyEventReceiver, filter);
     }
+    private BroadcastReceiver mHomeKeyEventReceiver = new BroadcastReceiver() {
+        String SYSTEM_REASON = "reason";
+        String SYSTEM_HOME_KEY = "homekey";
+        String SYSTEM_HOME_KEY_LONG = "recentapps";
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
+                String reason = intent.getStringExtra(SYSTEM_REASON);
+                if (TextUtils.equals(reason, SYSTEM_HOME_KEY)) {
+                    //表示按了home键,程序到了后台
+                    AppsActivity.this.finish();
+                }else if(TextUtils.equals(reason, SYSTEM_HOME_KEY_LONG)){
+                    //表示长按home键,显示最近使用的程序列表
+                    AppsActivity.this.finish();
+                }
+            }
+        }
+    };
 
     public int[] getChildLocation(int position,int currentSelectedLine) {
         int x,y ;
@@ -144,9 +168,9 @@ public class AppsActivity extends Activity implements AppLicationViewDao.updateV
 
     @Override 
     public void showProgressbarandAppcount(int[] progressAndcount,int SDAvailableSize) {
-    	appSize.setText("可用空间"+SDAvailableSize+"MB");
+    	appSize.setText(getResources().getString(R.string.used_size)+SDAvailableSize+"MB");
         progress.setProgress(progressAndcount[1]);
-        appCount.setText("应用程序（"+progressAndcount[0]+"）");
+        appCount.setText(getResources().getString(R.string.app_pro)+"（"+progressAndcount[0]+"）");
     }
 
     @Override
@@ -181,6 +205,7 @@ public class AppsActivity extends Activity implements AppLicationViewDao.updateV
     protected void onDestroy() {
         try{
             unregisterReceiver(packageReceiver);
+            unregisterReceiver(mHomeKeyEventReceiver);
         }catch (Exception e){
 
         }

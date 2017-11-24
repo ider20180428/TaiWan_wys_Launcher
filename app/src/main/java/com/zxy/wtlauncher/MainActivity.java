@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextClock;
+import android.widget.Toast;
 
 import com.zxy.wtlauncher.adapter.TvGridAdapter;
 import com.zxy.wtlauncher.applist.AppsActivity;
@@ -21,6 +22,7 @@ import com.zxy.wtlauncher.util.NetUtil;
 import com.zxy.wtlauncher.util.PreferenceManager;
 import com.zxy.wtlauncher.view.LauncherItem;
 import com.zxy.wtlauncher.view.MyDialog;
+import com.zxy.wtlauncher.view.MyText;
 import com.zxy.wtlauncher.view.TvHorizontalGridView;
 import com.zxy.wtlauncher.view.TvHorizontalGridView.OnItemClickListener;
 import com.zxy.wtlauncher.view.TvMarqueeText;
@@ -41,17 +43,23 @@ import java.util.List;
 public class MainActivity extends Activity {
 	protected static final String TAG = "MainActivity";
 	private TextClock tc_date,tc_time;
-	private LauncherItem[] items;
+	private LauncherItem[] items,itemsb;
 	private PreferenceManager pf;
-	private TvRelativeLayoutAsGroup tvrel;
+	private TvRelativeLayoutAsGroup tvrel,tvrelb;
 	private LauncherItem currentItem =null;
-	private TvMarqueeText mt_tip;
+	private TvMarqueeText mt_tip,address_tip;
 	private ImageView net_icon,tf_icon,usb_icon,test;
+	private Method systemProperties_get = null;
+	private final String ADULT = "adult_mode";
+	private final String MOVIE = "movie_mode";
+	private String mode ;
+	private MyText movie,adult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         pf = PreferenceManager.getInstance(this);
+		mode = pf.getString("select_mode",MOVIE);
         initview();
         updateData();
         registeservers();
@@ -81,6 +89,8 @@ public class MainActivity extends Activity {
     	return super.onKeyDown(keyCode, event);
     }
 	private void initview() {
+		movie = (MyText)findViewById(R.id.movie_text);
+		adult = (MyText)findViewById(R.id.adult_text);
 		tc_date = (TextClock) findViewById(R.id.tc_date);
 		tc_date.setFormat12Hour("yyyy-MM-dd");
 		tc_date.setFormat24Hour("yyyy-MM-dd");
@@ -88,7 +98,13 @@ public class MainActivity extends Activity {
 		tc_time.setFormat12Hour("h:mm");
 		tc_time.setFormat24Hour("h:mm");
 		items = new LauncherItem[10];
+		itemsb = new LauncherItem[2];
 		tvrel =(TvRelativeLayoutAsGroup) findViewById(R.id.launcher_items);
+		tvrelb =(TvRelativeLayoutAsGroup) findViewById(R.id.launcher_itemsb);
+		itemsb[0] = (LauncherItem) findViewById(R.id.launcher_item_b1);
+		itemsb[1] = (LauncherItem) findViewById(R.id.launcher_item_b2);
+		itemsb[0].setIcon(R.drawable.btn02);
+		itemsb[1].setIcon(R.drawable.btn01);
 		items[0] = (LauncherItem) findViewById(R.id.launcher_item1);
 		items[1] = (LauncherItem) findViewById(R.id.launcher_item2);
 		items[2] = (LauncherItem) findViewById(R.id.launcher_item3);
@@ -99,8 +115,10 @@ public class MainActivity extends Activity {
 		items[7] = (LauncherItem) findViewById(R.id.launcher_item8);
 		items[8] = (LauncherItem) findViewById(R.id.launcher_item9);
 		items[9] = (LauncherItem) findViewById(R.id.launcher_item10);
-		mt_tip = (TvMarqueeText) findViewById(R.id.mt_tip);
-		mt_tip.startMarquee();
+		//mt_tip = (TvMarqueeText) findViewById(R.id.mt_tip);
+		//mt_tip.startMarquee();
+		address_tip = (TvMarqueeText)findViewById(R.id.address_tip);
+		address_tip.startMarquee();
 		net_icon = (ImageView) findViewById(R.id.net_icon);
 		tf_icon = (ImageView) findViewById(R.id.tf_icon);
 		usb_icon = (ImageView) findViewById(R.id.usb_icon);
@@ -113,7 +131,11 @@ public class MainActivity extends Activity {
 				
 				if(app!=null){
 					if(!app.getPackageName().equals("app.add")){
-						Application.startApp(getApplicationContext(), app);
+						if (NetUtil.isNetworkAvailable(MainActivity.this)) {
+							Application.startApp(getApplicationContext(), app);
+						}else {
+							Toast.makeText(MainActivity.this, getString(R.string.network_inposiable) , Toast.LENGTH_SHORT).show();
+						}
 					}else{
 						//add
 						currentItem = item;
@@ -123,7 +145,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		tvrel.setOnLongClickListener(new OnChildLongClickListener() {
-			
+
 			@Override
 			public void onChildLongClick(View child) {
 				LauncherItem item = (LauncherItem) child;
@@ -131,10 +153,65 @@ public class MainActivity extends Activity {
 				pf.delete(item.getTag().toString());
 			}
 		});
-		
+		tvrelb.setOnChildClickListener(new OnChildClickListener() {
+
+			@Override
+			public void onChildClick(View child) {
+				LauncherItem item = (LauncherItem) child;
+				Application app = item.getApp();
+
+				if(app!=null){
+					if(!app.getPackageName().equals("app.add")){
+						if (NetUtil.isNetworkAvailable(MainActivity.this)) {
+							Application.startApp(getApplicationContext(), app);
+						}else {
+							Toast.makeText(MainActivity.this, getString(R.string.network_inposiable) , Toast.LENGTH_SHORT).show();
+						}
+					}else{
+						//add
+						currentItem = item;
+						showAddDialog(getlocalApps(),MainActivity.this);
+					}
+				}
+			}
+		});
+		movie.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				movie.setSelected(true);
+				adult.setSelected(false);
+				mode = MOVIE;
+				pf.putString("select_mode",MOVIE);
+				tvrel.setVisibility(View.VISIBLE);
+				tvrelb.setVisibility(View.GONE);
+			}
+		});
+		adult.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				adult.setSelected(true);
+				movie.setSelected(false);
+				mode = ADULT;
+				pf.putString("select_mode",ADULT);
+				tvrel.setVisibility(View.GONE);
+				tvrelb.setVisibility(View.VISIBLE);
+			}
+		});
+		if (mode.equals(MOVIE)){
+			movie.setSelected(true);
+			adult.setSelected(false);
+			tvrel.setVisibility(View.VISIBLE);
+			tvrelb.setVisibility(View.GONE);
+		}else {
+			movie.setSelected(false);
+			adult.setSelected(true);
+			tvrel.setVisibility(View.GONE);
+			tvrelb.setVisibility(View.VISIBLE);
+		}
+
 	}
-	
-	
+
+
 	public void startInstall(){
 		Intent intent = new Intent(this, InstallActivity.class);
     	startActivity(intent);
@@ -180,6 +257,25 @@ public class MainActivity extends Activity {
 				pf.delete(tag);
 				items[i].showApplication(Application.doAddApplication(getApplicationContext()));
 			}
+			if (i>4){
+				items[i].setNextFocusDownId(R.id.movie_text);
+			}
+		}
+		for (int i = 0; i < itemsb.length; i++) {
+			String tag = itemsb[i].getTag().toString();
+			Log.i("zxy", "tag==="+tag);
+			String packageName = pf.getPackage(tag);
+			if(packageName!=null){
+				Application app =Application.doApplication(packageName, getApplicationContext());
+				if(app==null){
+					app = Application.doAddApplication(getApplicationContext());
+				}
+				itemsb[i].showApplication(app);
+			}else{
+				pf.delete(tag);
+				itemsb[i].showApplication(Application.doAddApplication(getApplicationContext()));
+			}
+			itemsb[i].setNextFocusDownId(R.id.adult_text);
 		}
 	}
     
@@ -242,10 +338,12 @@ public class MainActivity extends Activity {
 			BroadcastReceiver installReceiver = new BroadcastReceiver() {
 				@Override
 				public void onReceive(Context context, Intent intent) {
+					pf.putString("12", "com.yolib.ibiza");
+					pf.putString("11", "com.ibizatv.ch2");
 						pf.putString("1", "com.qianxun.tvbox");
 						pf.putString("2", "tvfan.tv");
 						pf.putString("3", "com.moretv.android");
-						pf.putString("4", "com.vcinema.client.tv");
+						pf.putString("4", "com.android.vending");
 						pf.putString("5", "hdpfans.com");
 						pf.putString("6", "com.iflytek.aichang.tv");
 						pf.putString("7", "org.amotv.videolive");
@@ -460,7 +558,8 @@ public class MainActivity extends Activity {
 			unregisterReceiver(netReceiver);
 			unregisterReceiver(mediaReciever);
 			unregisterReceiver(installReceiver);
-			mt_tip.stopMarquee();
+			//mt_tip.stopMarquee();
+			address_tip.stopMarquee();
 		}catch(Exception e){
 			e.printStackTrace();
 		}

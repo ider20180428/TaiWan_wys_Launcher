@@ -56,7 +56,9 @@ public class PreferenceManager {
 	public boolean getBoolean(String key) {
 		return preferences.getBoolean(key, false);
 	}
-	
-	
+
+	public String getString(String key,String def) {
+		return preferences.getString(key, def);
+	}
 	
 }

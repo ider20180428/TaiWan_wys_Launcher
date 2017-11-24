@@ -14,7 +14,7 @@ public class BootCompleteReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Toast toast = Toast.makeText(context,"建議搭配無線滑鼠會有更好的體驗！", Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(context,context.getResources().getString(R.string.notice_start), Toast.LENGTH_LONG);
         LinearLayout linearLayout = (LinearLayout) toast.getView();
         TextView messageTextView = (TextView) linearLayout.getChildAt(0);
         messageTextView.setTextSize(33);

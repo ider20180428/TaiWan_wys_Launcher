@@ -10,8 +10,15 @@
     <string name="CleanedMemory">Cleaned up ：%1$s MB Currently available memory：%2$s M</string>
     <string name="add_app">select  your apps!!!!!!</string>
     <string name="tip_app">Long press OK delete application，Click "+" add application!!!!!!</string>
+    <string name="address_tip">最新優惠及更新訊息，請上官方網站查詢 www.pinky-box.com</string>
     <string name="openapp">open</string>
-     <string name="delete">uninstall</string>
-      <string name="install_title">Apps is installing, please wait…(%1$d/%2$d)</string>
+    <string name="delete">uninstall</string>
+    <string name="install_title">Apps is installing, please wait…(%1$d/%2$d)</string>
     <string name="install_success">Install Success, Press any key to start.</string>
+    <string name="notice_start">Proposed wireless mouse will have a better experience!</string>
+    <string name="network_inposiable">Network unavailable !</string>
+    <string name="used_size">Available space</string>
+    <string name="app_pro">Application</string>
+    <string name="movie">Movie</string>
+    <string name="adult">Adult</string>
 </resources>
