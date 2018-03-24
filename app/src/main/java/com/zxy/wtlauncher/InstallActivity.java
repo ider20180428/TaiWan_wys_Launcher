@@ -11,6 +11,8 @@ import android.view.KeyEvent;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+
+
 public class InstallActivity extends Activity implements IView {
 	
 	private ProgressBar progressbar;

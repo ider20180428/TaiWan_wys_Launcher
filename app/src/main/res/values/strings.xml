@@ -21,4 +21,8 @@
     <string name="app_pro">Application</string>
     <string name="movie">Movie</string>
     <string name="adult">Adult</string>
+
+    <string name="app_not_found">app is not installed</string>
+
+
 </resources>

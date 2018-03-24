@@ -21,4 +21,6 @@
     <string name="app_pro">应用程序</string>
     <string name="movie">影视</string>
     <string name="adult">成人</string>
+
+    <string name="app_not_found">应用未安装</string>
 </resources>
