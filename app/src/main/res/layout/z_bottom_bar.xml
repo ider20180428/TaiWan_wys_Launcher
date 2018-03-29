@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zxy.wtlauncher.widget.MainLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="266dp"
+    android:layout_gravity="center"
+    android:background="@color/layout_bg_color">
+
+
+    <LinearLayout
+        android:id="@+id/bottom_lin0"
+        style="@style/bottom_bar_lin_style"
+        android:layout_marginLeft="-400dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            style="@style/category_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/bottom_setting" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_lin1"
+        style="@style/bottom_bar_lin_style"
+        android:layout_marginLeft="-240dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            style="@style/category_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="@string/bottom_tools" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_lin2"
+        style="@style/bottom_bar_lin_style"
+        android:layout_marginLeft="-80dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/category_textview_tv"
+            style="@style/category_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="@string/bottom_tv" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_lin3"
+        style="@style/bottom_bar_lin_style"
+        android:layout_marginRight="-80dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            style="@style/category_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="@string/bottom_amusement" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_lin4"
+        style="@style/bottom_bar_lin_style"
+        android:layout_marginRight="-240dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            style="@style/category_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="@string/bottom_vip_area" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_lin5"
+        style="@style/bottom_bar_lin_style"
+        android:layout_marginRight="-400dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            style="@style/category_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- 最顶层边框 -->
+
+    <com.datamax.DmLauncher.widget.MainUpView
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:upImageRes="@drawable/test_rectangle" />
+
+
+</com.zxy.wtlauncher.widget.MainLayout>

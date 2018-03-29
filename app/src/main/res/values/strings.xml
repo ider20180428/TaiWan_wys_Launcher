@@ -10,7 +10,7 @@
     <string name="CleanedMemory">Cleaned up ：%1$s MB Currently available memory：%2$s M</string>
     <string name="add_app">select  your apps!!!!!!</string>
     <string name="tip_app">Long press OK delete application，Click "+" add application!!!!!!</string>
-    <string name="address_tip">最新優惠及更新訊息，請上官方網站查詢 www.pinky-box.com</string>
+    <string name="address_tip">Please visit the official website for the latest information : www.pinky-box.com</string>
     <string name="openapp">open</string>
     <string name="delete">uninstall</string>
     <string name="install_title">Apps is installing, please wait…(%1$d/%2$d)</string>
@@ -23,6 +23,12 @@
     <string name="adult">Adult</string>
 
     <string name="app_not_found">app is not installed</string>
+    <string name="bottom_setting">Settings</string>
+    <string name="bottom_tools">Tools</string>
+    <string name="bottom_tv">Film/TV</string>
+    <string name="bottom_amusement">Amusement</string>
+    <string name="bottom_vip_area">VIP Area</string>
+
 
 
 </resources>

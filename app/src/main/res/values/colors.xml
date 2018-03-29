@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="layout_bg_color">#4876ff</color>
+    <color name="item_bg_color">#80436eee</color>
+
+
     <color name="white">#ffffff</color>
     <color name="purple">#993399</color>
     <color name="yellow">#ffff00</color>
