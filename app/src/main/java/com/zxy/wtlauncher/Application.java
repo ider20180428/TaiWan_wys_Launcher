@@ -7,10 +7,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
-
 import com.zxy.wtlauncher.applist.ApplicationUtil;
 import com.zxy.wtlauncher.util.LogUtils;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
