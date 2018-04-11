@@ -4,7 +4,10 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RelativeLayout;
+
+import com.zxy.wtlauncher.Application;
 import com.zxy.wtlauncher.R;
+import com.zxy.wtlauncher.util.PreferenceManager;
 import com.zxy.wtlauncher.util.Util;
 
 /**
@@ -13,10 +16,12 @@ import com.zxy.wtlauncher.util.Util;
  */
 public class BaseItemLayout extends RelativeLayout{
 
+    public PreferenceManager pf;
     public Context mContext;
     public BaseItemLayout(Context context) {
         super(context);
         this.mContext=context;
+        pf=PreferenceManager.getInstance(mContext,"zhaoyf");
     }
 
 
@@ -62,5 +67,6 @@ public class BaseItemLayout extends RelativeLayout{
             Util.showToast(mContext, mContext.getResources().getString(R.string.app_not_found));
         }
     }
+
 
 }

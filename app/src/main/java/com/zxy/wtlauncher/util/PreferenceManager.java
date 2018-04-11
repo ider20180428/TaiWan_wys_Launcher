@@ -19,9 +19,21 @@ public class PreferenceManager {
 		return manager;
 	}
 
+	public static PreferenceManager getInstance(Context context,String xmlName) {
+		if(manager == null) {
+			manager = new PreferenceManager(context,xmlName);
+		}
+		return manager;
+	}
+
 	private PreferenceManager(Context context) {
 		this.context = context;
 		preferences = context.getSharedPreferences("fla", Context.MODE_PRIVATE);
+		editor = preferences.edit();
+	}
+	private PreferenceManager(Context context,String xmlName) {
+		this.context = context;
+		preferences = context.getSharedPreferences(xmlName, Context.MODE_PRIVATE);
 		editor = preferences.edit();
 	}
 
@@ -60,5 +72,11 @@ public class PreferenceManager {
 	public String getString(String key,String def) {
 		return preferences.getString(key, def);
 	}
+
+
+	public void clear(){
+        editor.clear();
+        editor.commit();
+    }
 	
 }

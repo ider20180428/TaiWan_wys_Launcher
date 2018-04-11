@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_gravity="right"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="20dp"
+    android:layout_height="wrap_content">
+
+    <com.zxy.wtlauncher.view.MyClock
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    
+    <ImageView
+        android:id="@+id/net_icon"
+        android:src="@drawable/icon_neterror"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <ImageView
+        android:id="@+id/tf_icon"
+        android:src="@drawable/icon_sdcard_false"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    <ImageView
+        android:id="@+id/usb_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+
+
+
+
+
+
+
+
+</LinearLayout>

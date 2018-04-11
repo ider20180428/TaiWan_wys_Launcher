@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.zxy.wtlauncher.Application;
 import com.zxy.wtlauncher.R;
 

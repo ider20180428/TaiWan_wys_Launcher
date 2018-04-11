@@ -3,26 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="266dp"
+    android:layout_height="180dp"
     android:layout_gravity="bottom"
-    android:background="@color/layout_bg_color">
+    android:background="@color/bottom_layout_bg_color">
 
 
     <LinearLayout
         android:id="@+id/bottom_lin0"
         style="@style/bottom_bar_lin_style"
         android:layout_marginLeft="-400dp"
+        android:nextFocusLeft="@+id/bottom_lin5"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_launcher" />
+            style="@style/bottom_item_image_style"
+            android:src="@drawable/bottom_settings" />
 
         <TextView
             style="@style/category_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
             android:text="@string/bottom_setting" />
     </LinearLayout>
 
@@ -33,15 +31,12 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_launcher" />
+            android:padding="10dp"
+            style="@style/bottom_item_image_style"
+            android:src="@drawable/bottom_tools" />
 
         <TextView
             style="@style/category_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
             android:text="@string/bottom_tools" />
     </LinearLayout>
 
@@ -52,16 +47,11 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_launcher" />
+            style="@style/bottom_item_image_style"
+            android:src="@drawable/bottom_tv" />
 
         <TextView
-            android:id="@+id/category_textview_tv"
             style="@style/category_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
             android:text="@string/bottom_tv" />
     </LinearLayout>
 
@@ -72,15 +62,11 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_launcher" />
+            style="@style/bottom_item_image_style"
+            android:src="@drawable/bottom_enjoy" />
 
         <TextView
             style="@style/category_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
             android:text="@string/bottom_amusement" />
     </LinearLayout>
 
@@ -91,40 +77,45 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_launcher" />
+            style="@style/bottom_item_image_style"
+            android:src="@drawable/bottom_vip" />
 
         <TextView
             style="@style/category_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
             android:text="@string/bottom_vip_area" />
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/bottom_lin5"
         style="@style/bottom_bar_lin_style"
+        android:nextFocusRight="@+id/bottom_lin0"
         android:layout_marginRight="-400dp"
-        android:orientation="vertical">
+       >
 
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_launcher" />
+            android:layout_gravity="center"
+            android:layout_marginTop="-20dp"
+            style="@style/bottom_item_image_style"
+            android:src="@drawable/zzb" />
 
         <TextView
             style="@style/category_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center" />
-    </LinearLayout>
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="bottom"
+            android:text="IBiza" />
+        <ImageView
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/zza"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+    </FrameLayout>
 
     <!-- 最顶层边框 -->
 
     <com.zxy.wtlauncher.widget.MainUpView
-        android:id="@+id/mainUpView1"
+        android:id="@+id/bottom_mainUpView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:upImageRes="@drawable/ic_launcher" />

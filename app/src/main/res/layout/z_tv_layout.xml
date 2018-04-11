@@ -23,6 +23,7 @@
             android:background="@color/item_bg_color"
             android:clickable="true"
             android:focusable="true"
+            android:nextFocusDown="@+id/bottom_lin2"
             android:focusableInTouchMode="true">
 
             <ImageView
@@ -31,14 +32,14 @@
                 android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+          />
 
             <TextView
                 android:id="@+id/tv_tv0"
                 style="@style/tv_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TV" />
+             />
         </com.zxy.wtlauncher.widget.ReflectItemView>
 
         <com.zxy.wtlauncher.widget.ReflectItemView
@@ -54,18 +55,15 @@
 
             <ImageView
                 android:id="@+id/tv_iv1"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+              style="@style/bottom_item_image_style"
+          />
 
             <TextView
                 android:id="@+id/tv_tv1"
                 style="@style/tv_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TV" />
+             />
         </com.zxy.wtlauncher.widget.ReflectItemView>
 
 
@@ -77,24 +75,22 @@
             android:layout_marginLeft="420dp"
             android:layout_marginTop="230dp"
             android:background="@color/item_bg_color"
+            android:nextFocusDown="@+id/bottom_lin2"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true">
 
             <ImageView
                 android:id="@+id/tv_iv2"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+                style="@style/bottom_item_image_style"
+          />
 
             <TextView
                 android:id="@+id/tv_tv2"
                 style="@style/tv_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TV" />
+             />
         </com.zxy.wtlauncher.widget.ReflectItemView>
 
         <com.zxy.wtlauncher.widget.ReflectItemView
@@ -110,18 +106,15 @@
 
             <ImageView
                 android:id="@+id/tv_iv3"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+                style="@style/bottom_item_image_style"
+          />
 
             <TextView
                 android:id="@+id/tv_tv3"
                 style="@style/tv_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TV" />
+             />
         </com.zxy.wtlauncher.widget.ReflectItemView>
 
 
@@ -132,24 +125,22 @@
             android:layout_marginLeft="610dp"
             android:layout_marginTop="230dp"
             android:background="@color/item_bg_color"
+            android:nextFocusDown="@+id/bottom_lin2"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true">
 
             <ImageView
                 android:id="@+id/tv_iv4"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+                style="@style/bottom_item_image_style"
+          />
 
             <TextView
                 android:id="@+id/tv_tv4"
                 style="@style/tv_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TV" />
+             />
         </com.zxy.wtlauncher.widget.ReflectItemView>
 
 
@@ -166,18 +157,15 @@
 
             <ImageView
                 android:id="@+id/tv_iv5"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+                style="@style/bottom_item_image_style"
+          />
 
             <TextView
                 android:id="@+id/tv_tv5"
                 style="@style/tv_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TV" />
+             />
         </com.zxy.wtlauncher.widget.ReflectItemView>
 
         <com.zxy.wtlauncher.widget.ReflectItemView
@@ -187,24 +175,22 @@
             android:layout_marginLeft="800dp"
             android:layout_marginTop="230dp"
             android:background="@color/item_bg_color"
+            android:nextFocusDown="@+id/bottom_lin2"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true">
 
             <ImageView
                 android:id="@+id/tv_iv6"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher" />
+                style="@style/bottom_item_image_style"
+          />
 
             <TextView
                 android:id="@+id/tv_tv6"
                 style="@style/tv_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TV" />
+             />
         </com.zxy.wtlauncher.widget.ReflectItemView>
 
 
@@ -214,7 +200,10 @@
 
 
 
-
+    <com.zxy.wtlauncher.widget.MainUpView
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 
 </RelativeLayout>

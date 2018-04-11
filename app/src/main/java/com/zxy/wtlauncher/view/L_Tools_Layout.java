@@ -1,10 +1,14 @@
 package com.zxy.wtlauncher.view;
 
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.zxy.wtlauncher.Application;
 import com.zxy.wtlauncher.R;
 import com.zxy.wtlauncher.util.Util;
 import com.zxy.wtlauncher.widget.ReflectItemView;
@@ -18,14 +22,26 @@ public class L_Tools_Layout extends BaseItemLayout implements IVIewLayout,
 
 
     private Context mContext;
-    private int[] ref_ids={R.id.tv_0,R.id.tv_1,R.id.tv_2,R.id.tv_3,R.id.tv_4,R.id.tv_5};
-    private ReflectItemView[]reflectItemViews=new ReflectItemView[6];
+    private int[] ref_ids={R.id.tv_0,R.id.tv_1,R.id.tv_2,R.id.tv_3,R.id.tv_4,R.id.tv_5,R.id.tv_6};
+    private ReflectItemView[]reflectItemViews=new ReflectItemView[7];
+    private ImageView[]iconImageViews=new ImageView[7];
+    private int[]imageViewIds={R.id.tv_iv0,R.id.tv_iv1,R.id.tv_iv2,R.id.tv_iv3,R.id.tv_iv4,R.id.tv_iv5,R.id.tv_iv6};
+    private int[]appNameTextViewIds={R.id.tv_tv0,R.id.tv_tv1,R.id.tv_tv2,R.id.tv_tv3,R.id.tv_tv4,R.id.tv_tv5,R.id.tv_tv6};
+    private TextView[]appNameTextViews=new TextView[7];
+
+    private String tags[]={"10","11","12","13","14","15","16"};
+    private boolean[]shortCutsStatus={false,false,false,false,false,false,false};
+    private String[]shortCutsTag={"100","101","102","103","104","105","106"};
+    private ComponentName[]componentNames=new ComponentName[7];
+
+
+
 
     public L_Tools_Layout(Context context) {
         super(context);
         this.mContext=context;
         setGravity(1);
-        addView(LayoutInflater.from(this.mContext).inflate(R.layout.z_tv_layout,
+        addView(LayoutInflater.from(this.mContext).inflate(R.layout.z_tools_layout,
                 null));
     }
 
@@ -34,22 +50,31 @@ public class L_Tools_Layout extends BaseItemLayout implements IVIewLayout,
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_0:
-                Util.showToast(mContext,"1111");
+
+
+
                 break;
             case R.id.tv_1:
-                Util.showToast(mContext,"222");
+
                 break;
             case R.id.tv_2:
-                Util.showToast(mContext,"3333");
+
                 break;
             case R.id.tv_3:
-                Util.showToast(mContext,"4444");
+
+
                 break;
             case R.id.tv_4:
-                Util.showToast(mContext,"5555");
+
+
                 break;
             case R.id.tv_5:
-                Util.showToast(mContext,"6666");
+
+
+                break;
+
+            case R.id.tv_6:
+
                 break;
 
         }
@@ -61,11 +86,40 @@ public class L_Tools_Layout extends BaseItemLayout implements IVIewLayout,
 
     }
 
+
+
     @Override
     public void initView() {
         for (int i=0;i<ref_ids.length;i++){
             reflectItemViews[i]=(ReflectItemView) findViewById(ref_ids[i]);
             reflectItemViews[i].setOnClickListener(this);
+            iconImageViews[i]=(ImageView)findViewById(imageViewIds[i]);
+            appNameTextViews[i]=(TextView)findViewById(appNameTextViewIds[i]);
+
+            String pkgName= pf.getString(tags[i],null);
+
+            if (null!=pkgName){
+                Application app=Application.doApplication(pkgName,mContext);
+                if (null!=app){
+                    iconImageViews[i].setImageDrawable(app.getIcon());
+                    appNameTextViews[i].setText(app.getLabel());
+
+                    shortCutsStatus[i]=true;
+                    pf.putBoolean(shortCutsTag[i],true);
+//                    componentNames[i]=new ComponentName(app.getPackageName(),app.getClassName());
+                }else {
+                    if (pkgName.equals("clean")){
+                        iconImageViews[i].setImageResource(R.drawable.onkeyclean);
+                        appNameTextViews[i].setText("一鍵清理");
+                    }else {
+                        iconImageViews[i].setImageResource(R.drawable.add_apps);
+                        appNameTextViews[i].setText("添加");
+                    }
+                }
+            }else {
+                iconImageViews[i].setImageResource(R.drawable.add_apps);
+                appNameTextViews[i].setText("添加");
+            }
         }
     }
 

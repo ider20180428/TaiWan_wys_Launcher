@@ -1,12 +1,12 @@
 package com.zxy.wtlauncher.view;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.zxy.wtlauncher.R;
-import com.zxy.wtlauncher.util.Util;
+import com.zxy.wtlauncher.applist.AppsActivity;
 import com.zxy.wtlauncher.widget.ReflectItemView;
 
 /**
@@ -18,8 +18,10 @@ public class L_Settings_Layout extends BaseItemLayout implements IVIewLayout,
 
 
     private Context mContext;
-    private int[] ref_ids={R.id.tv_0,R.id.tv_1,R.id.tv_2,R.id.tv_3,R.id.tv_4,R.id.tv_5};
-    private ReflectItemView[]reflectItemViews=new ReflectItemView[6];
+    private int[] ref_ids={R.id.tv_0,R.id.tv_1,R.id.tv_2,R.id.tv_3,R.id.tv_4,R.id.tv_5,R.id.tv_6};
+    private ReflectItemView[]reflectItemViews=new ReflectItemView[7];
+    private ImageView imageView0,imageView1;
+    private TextView textView0,textView1;
 
     public L_Settings_Layout(Context context) {
         super(context);
@@ -34,26 +36,25 @@ public class L_Settings_Layout extends BaseItemLayout implements IVIewLayout,
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_0:
-                Util.showToast(mContext,"1111");
+                launchApp("com.android.tv.settings");
                 break;
             case R.id.tv_1:
-                Util.showToast(mContext,"222");
+                startActivity(AppsActivity.class);
+
                 break;
             case R.id.tv_2:
-                Util.showToast(mContext,"3333");
+
                 break;
             case R.id.tv_3:
-                Util.showToast(mContext,"4444");
+
                 break;
             case R.id.tv_4:
-                Util.showToast(mContext,"5555");
+
                 break;
             case R.id.tv_5:
-                Util.showToast(mContext,"6666");
+
                 break;
-
         }
-
     }
 
     @Override
@@ -66,7 +67,18 @@ public class L_Settings_Layout extends BaseItemLayout implements IVIewLayout,
         for (int i=0;i<ref_ids.length;i++){
             reflectItemViews[i]=(ReflectItemView) findViewById(ref_ids[i]);
             reflectItemViews[i].setOnClickListener(this);
+            if (i>1){
+                reflectItemViews[i].setVisibility(View.INVISIBLE);
+            }
         }
+        imageView0=(ImageView)findViewById(R.id.tv_iv0);
+        imageView1=(ImageView)findViewById(R.id.tv_iv1);
+        textView0=(TextView)findViewById(R.id.tv_tv0);
+        textView1=(TextView)findViewById(R.id.tv_tv1);
+        imageView0.setImageResource(R.drawable.icon_settings_focus);
+        imageView1.setImageResource(R.drawable.app_install);
+        textView0.setText("系統設定");
+        textView1.setText("程式列表");
     }
 
     @Override
@@ -78,6 +90,5 @@ public class L_Settings_Layout extends BaseItemLayout implements IVIewLayout,
         }
         this.ref_ids=null;
         this.reflectItemViews=null;
-
     }
 }

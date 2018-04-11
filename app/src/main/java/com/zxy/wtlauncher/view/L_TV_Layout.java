@@ -1,11 +1,17 @@
 package com.zxy.wtlauncher.view;
 
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.zxy.wtlauncher.Application;
 import com.zxy.wtlauncher.R;
-import com.zxy.wtlauncher.util.Util;
+import com.zxy.wtlauncher.util.PreferenceManager;
 import com.zxy.wtlauncher.widget.ReflectItemView;
 
 /**
@@ -15,10 +21,19 @@ import com.zxy.wtlauncher.widget.ReflectItemView;
 public class L_TV_Layout extends BaseItemLayout implements IVIewLayout,
         View.OnFocusChangeListener,View.OnClickListener{
 
-
     private Context mContext;
-    private int[] ref_ids={R.id.tv_0,R.id.tv_1,R.id.tv_2,R.id.tv_3,R.id.tv_4,R.id.tv_5};
-    private ReflectItemView[]reflectItemViews=new ReflectItemView[6];
+    private int[] ref_ids={R.id.tv_0,R.id.tv_1,R.id.tv_2,R.id.tv_3,R.id.tv_4,R.id.tv_5,R.id.tv_6};
+    private ReflectItemView[]reflectItemViews=new ReflectItemView[7];
+    private ImageView[]iconImageViews=new ImageView[7];
+    private int[]imageViewIds={R.id.tv_iv0,R.id.tv_iv1,R.id.tv_iv2,R.id.tv_iv3,R.id.tv_iv4,R.id.tv_iv5,R.id.tv_iv6};
+    private int[]appNameTextViewIds={R.id.tv_tv0,R.id.tv_tv1,R.id.tv_tv2,R.id.tv_tv3,R.id.tv_tv4,R.id.tv_tv5,R.id.tv_tv6};
+    private TextView[]appNameTextViews=new TextView[7];
+
+
+    private String pkgTags[]={"20","21","22","23","24","25","26"};
+    private boolean[]shortCutsStatus={false,false,false,false,false,false,false};
+    private String[]shortCutsTag={"200","201","202","203","204","205","206"};
+    private ComponentName[]componentNames=new ComponentName[7];
 
     public L_TV_Layout(Context context) {
         super(context);
@@ -26,6 +41,7 @@ public class L_TV_Layout extends BaseItemLayout implements IVIewLayout,
         setGravity(1);
         addView(LayoutInflater.from(this.mContext).inflate(R.layout.z_tv_layout,
                 null));
+
     }
 
 
@@ -33,26 +49,42 @@ public class L_TV_Layout extends BaseItemLayout implements IVIewLayout,
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_0:
-                Util.showToast(mContext,"1111");
+                if (shortCutsStatus[0]){
+                    launchApp(componentNames[0]);
+                }
                 break;
             case R.id.tv_1:
-                Util.showToast(mContext,"222");
+                if (shortCutsStatus[1]){
+                    launchApp(componentNames[1]);
+                }
                 break;
             case R.id.tv_2:
-                Util.showToast(mContext,"3333");
+                if (shortCutsStatus[2]){
+                    launchApp(componentNames[2]);
+                }
                 break;
             case R.id.tv_3:
-                Util.showToast(mContext,"4444");
+                if (shortCutsStatus[3]){
+                    launchApp(componentNames[3]);
+                }
                 break;
             case R.id.tv_4:
-                Util.showToast(mContext,"5555");
+                if (shortCutsStatus[4]){
+                    launchApp(componentNames[4]);
+                }
                 break;
             case R.id.tv_5:
-                Util.showToast(mContext,"6666");
+                if (shortCutsStatus[5]){
+                    launchApp(componentNames[5]);
+                }
+                break;
+            case R.id.tv_6:
+                if (shortCutsStatus[6]){
+                    launchApp(componentNames[6]);
+                }
                 break;
 
         }
-
     }
 
     @Override
@@ -60,12 +92,38 @@ public class L_TV_Layout extends BaseItemLayout implements IVIewLayout,
 
     }
 
+
     @Override
     public void initView() {
+
         for (int i=0;i<ref_ids.length;i++){
             reflectItemViews[i]=(ReflectItemView) findViewById(ref_ids[i]);
             reflectItemViews[i].setOnClickListener(this);
+            iconImageViews[i]=(ImageView)findViewById(imageViewIds[i]);
+            appNameTextViews[i]=(TextView)findViewById(appNameTextViewIds[i]);
+
+            String pkgName= pf.getString(pkgTags[i],null);
+            if (null!=pkgName){
+                Application app=Application.doApplication(pkgName,mContext);
+                if (null!=app){
+                    iconImageViews[i].setImageDrawable(app.getIcon());
+                    appNameTextViews[i].setText(app.getLabel());
+
+                    shortCutsStatus[i]=true;
+                    pf.putBoolean(shortCutsTag[i],true);
+//                    componentNames[i]=new ComponentName(app.getPackageName(),app.getClassName());
+                }else {
+                    iconImageViews[i].setImageResource(R.drawable.add_apps);
+                    appNameTextViews[i].setText("添加");
+                }
+            }else {
+                iconImageViews[i].setImageResource(R.drawable.add_apps);
+                appNameTextViews[i].setText("添加");
+            }
+
+
         }
+
     }
 
     @Override

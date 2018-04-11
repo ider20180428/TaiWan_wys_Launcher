@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.Toast;
-
 import com.zxy.wtlauncher.adapter.TvGridAdapter;
 import com.zxy.wtlauncher.applist.AppsActivity;
 import com.zxy.wtlauncher.util.NetUtil;
@@ -29,7 +28,6 @@ import com.zxy.wtlauncher.view.TvMarqueeText;
 import com.zxy.wtlauncher.view.TvRelativeLayoutAsGroup;
 import com.zxy.wtlauncher.view.TvRelativeLayoutAsGroup.OnChildClickListener;
 import com.zxy.wtlauncher.view.TvRelativeLayoutAsGroup.OnChildLongClickListener;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -338,17 +336,17 @@ public class MainActivity extends Activity {
 			BroadcastReceiver installReceiver = new BroadcastReceiver() {
 				@Override
 				public void onReceive(Context context, Intent intent) {
-					pf.putString("12", "com.yolib.ibiza");
-					pf.putString("11", "com.ibizatv.ch2");
-						pf.putString("1", "com.qianxun.tvbox");
-						pf.putString("2", "tvfan.tv");
-						pf.putString("3", "com.moretv.android");
-						pf.putString("4", "com.android.vending");
-						pf.putString("5", "hdpfans.com");
-						pf.putString("6", "com.iflytek.aichang.tv");
-						pf.putString("7", "org.amotv.videolive");
-						pf.putString("8", "com.google.android.youtube");
-						pf.putString("9", "com.shafa.market");
+//					pf.putString("12", "com.yolib.ibiza");
+//					pf.putString("11", "com.ibizatv.ch2");
+//						pf.putString("1", "com.qianxun.tvbox");
+//						pf.putString("2", "tvfan.tv");
+//						pf.putString("3", "com.moretv.android");
+//						pf.putString("4", "com.android.vending");
+//						pf.putString("5", "hdpfans.com");
+//						pf.putString("6", "com.iflytek.aichang.tv");
+//						pf.putString("7", "org.amotv.videolive");
+//						pf.putString("8", "com.google.android.youtube");
+//						pf.putString("9", "com.shafa.market");
 						
 					
 

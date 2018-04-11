@@ -4,6 +4,7 @@ package com.zxy.wtlauncher.view;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 
 import com.zxy.wtlauncher.R;
 import com.zxy.wtlauncher.util.Util;
@@ -18,41 +19,23 @@ public class L_IBiza_Layout extends BaseItemLayout implements IVIewLayout,
 
 
     private Context mContext;
-    private int[] ref_ids={R.id.tv_0,R.id.tv_1,R.id.tv_2,R.id.tv_3,R.id.tv_4,R.id.tv_5};
-    private ReflectItemView[]reflectItemViews=new ReflectItemView[6];
+    private Button button;
+
 
     public L_IBiza_Layout(Context context) {
         super(context);
         this.mContext=context;
         setGravity(1);
-        addView(LayoutInflater.from(this.mContext).inflate(R.layout.z_tv_layout,
+        addView(LayoutInflater.from(this.mContext).inflate(R.layout.z_ibiza_layout,
                 null));
     }
 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.tv_0:
-                Util.showToast(mContext,"1111");
-                break;
-            case R.id.tv_1:
-                Util.showToast(mContext,"222");
-                break;
-            case R.id.tv_2:
-                Util.showToast(mContext,"3333");
-                break;
-            case R.id.tv_3:
-                Util.showToast(mContext,"4444");
-                break;
-            case R.id.tv_4:
-                Util.showToast(mContext,"5555");
-                break;
-            case R.id.tv_5:
-                Util.showToast(mContext,"6666");
-                break;
 
-        }
+
+
 
     }
 
@@ -63,21 +46,18 @@ public class L_IBiza_Layout extends BaseItemLayout implements IVIewLayout,
 
     @Override
     public void initView() {
-        for (int i=0;i<ref_ids.length;i++){
-            reflectItemViews[i]=(ReflectItemView) findViewById(ref_ids[i]);
-            reflectItemViews[i].setOnClickListener(this);
-        }
+        button = (Button)findViewById(R.id.ibiza_btn);
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Util.showToast(mContext,"打開");
+            }
+        });
+
     }
 
     @Override
     public void destory() {
-        if (this.reflectItemViews!=null){
-            for (ReflectItemView reflectItemView:reflectItemViews){
-                reflectItemView=null;
-            }
-        }
-        this.ref_ids=null;
-        this.reflectItemViews=null;
 
     }
 }
