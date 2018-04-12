@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/mainbg"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     
+    <!--<ProgressBar
+        android:id="@+id/install_progress"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_centerVertical="true"
+        style="?android:attr/progressBarStyleHorizontal" />-->
+
     <ProgressBar
         android:id="@+id/install_progress"
         android:layout_width="match_parent"
@@ -10,8 +20,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
         android:layout_centerVertical="true"
-        style="?android:attr/progressBarStyleHorizontal" />
-    	
+        style="@style/ProgressBar_Mini" />
     
     <TextView 
         android:id="@+id/install_text"

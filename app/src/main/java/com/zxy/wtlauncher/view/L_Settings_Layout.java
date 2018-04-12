@@ -27,7 +27,7 @@ public class L_Settings_Layout extends BaseItemLayout implements IVIewLayout,
         super(context);
         this.mContext=context;
         setGravity(1);
-        addView(LayoutInflater.from(this.mContext).inflate(R.layout.z_tv_layout,
+        addView(LayoutInflater.from(this.mContext).inflate(R.layout.z_settings_layout,
                 null));
     }
 
@@ -75,8 +75,8 @@ public class L_Settings_Layout extends BaseItemLayout implements IVIewLayout,
         imageView1=(ImageView)findViewById(R.id.tv_iv1);
         textView0=(TextView)findViewById(R.id.tv_tv0);
         textView1=(TextView)findViewById(R.id.tv_tv1);
-        imageView0.setImageResource(R.drawable.icon_settings_focus);
-        imageView1.setImageResource(R.drawable.app_install);
+        imageView0.setImageResource(R.drawable.advance_set);
+        imageView1.setImageResource(R.drawable.all_apps);
         textView0.setText("系統設定");
         textView1.setText("程式列表");
     }

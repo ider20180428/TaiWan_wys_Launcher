@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.zxy.wtlauncher.widget.MainLayout
+        android:layout_width="1000dp"
+        android:layout_height="800dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <com.zxy.wtlauncher.widget.ReflectItemView
+            android:id="@+id/tv_0"
+            android:layout_width="330dp"
+            android:layout_height="330dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/item_bg_color"
+            android:clickable="true"
+            android:focusable="true"
+            android:nextFocusDown="@+id/bottom_lin2"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:id="@+id/tv_iv0"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+          />
+
+            <TextView
+                android:id="@+id/tv_tv0"
+                style="@style/tv_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+             />
+        </com.zxy.wtlauncher.widget.ReflectItemView>
+
+        <com.zxy.wtlauncher.widget.ReflectItemView
+            android:id="@+id/tv_1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="420dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/item_bg_color"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:id="@+id/tv_iv1"
+              style="@style/bottom_item_image_style"
+          />
+
+            <TextView
+                android:id="@+id/tv_tv1"
+                style="@style/tv_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+             />
+        </com.zxy.wtlauncher.widget.ReflectItemView>
+
+
+
+        <com.zxy.wtlauncher.widget.ReflectItemView
+            android:id="@+id/tv_2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="420dp"
+            android:layout_marginTop="230dp"
+            android:background="@color/item_bg_color"
+            android:nextFocusDown="@+id/bottom_lin2"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:id="@+id/tv_iv2"
+                style="@style/bottom_item_image_style"
+          />
+
+            <TextView
+                android:id="@+id/tv_tv2"
+                style="@style/tv_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+             />
+        </com.zxy.wtlauncher.widget.ReflectItemView>
+
+        <com.zxy.wtlauncher.widget.ReflectItemView
+            android:id="@+id/tv_3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="610dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/item_bg_color"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:id="@+id/tv_iv3"
+                style="@style/bottom_item_image_style"
+          />
+
+            <TextView
+                android:id="@+id/tv_tv3"
+                style="@style/tv_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+             />
+        </com.zxy.wtlauncher.widget.ReflectItemView>
+
+
+        <com.zxy.wtlauncher.widget.ReflectItemView
+            android:id="@+id/tv_4"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="610dp"
+            android:layout_marginTop="230dp"
+            android:background="@color/item_bg_color"
+            android:nextFocusDown="@+id/bottom_lin2"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:id="@+id/tv_iv4"
+                style="@style/bottom_item_image_style"
+          />
+
+            <TextView
+                android:id="@+id/tv_tv4"
+                style="@style/tv_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+             />
+        </com.zxy.wtlauncher.widget.ReflectItemView>
+
+
+        <com.zxy.wtlauncher.widget.ReflectItemView
+            android:id="@+id/tv_5"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="800dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/item_bg_color"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:id="@+id/tv_iv5"
+                style="@style/bottom_item_image_style"
+          />
+
+            <TextView
+                android:id="@+id/tv_tv5"
+                style="@style/tv_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+             />
+        </com.zxy.wtlauncher.widget.ReflectItemView>
+
+        <com.zxy.wtlauncher.widget.ReflectItemView
+            android:id="@+id/tv_6"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="800dp"
+            android:layout_marginTop="230dp"
+            android:background="@color/item_bg_color"
+            android:nextFocusDown="@+id/bottom_lin2"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:id="@+id/tv_iv6"
+                style="@style/bottom_item_image_style"
+          />
+
+            <TextView
+                android:id="@+id/tv_tv6"
+                style="@style/tv_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+             />
+        </com.zxy.wtlauncher.widget.ReflectItemView>
+
+
+    </com.zxy.wtlauncher.widget.MainLayout>
+
+
+
+
+
+    <com.zxy.wtlauncher.widget.MainUpView
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

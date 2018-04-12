@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
+import com.zxy.wtlauncher.IBizaActivity;
 import com.zxy.wtlauncher.R;
 import com.zxy.wtlauncher.util.Util;
 import com.zxy.wtlauncher.widget.ReflectItemView;
@@ -34,6 +35,12 @@ public class L_IBiza_Layout extends BaseItemLayout implements IVIewLayout,
     @Override
     public void onClick(View view) {
 
+        switch (view.getId()){
+            case R.id.ibiza_btn:
+
+                startActivity(IBizaActivity.class);
+                break;
+        }
 
 
 
@@ -47,12 +54,7 @@ public class L_IBiza_Layout extends BaseItemLayout implements IVIewLayout,
     @Override
     public void initView() {
         button = (Button)findViewById(R.id.ibiza_btn);
-        button.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Util.showToast(mContext,"打開");
-            }
-        });
+        button.setOnClickListener(this);
 
     }
 

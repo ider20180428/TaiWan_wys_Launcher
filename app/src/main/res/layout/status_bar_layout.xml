@@ -27,6 +27,10 @@
         android:id="@+id/usb_icon"
         android:layout_width="50dp"
         android:layout_height="50dp" />
+    <ImageView
+        android:id="@+id/ble_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
 
 
 

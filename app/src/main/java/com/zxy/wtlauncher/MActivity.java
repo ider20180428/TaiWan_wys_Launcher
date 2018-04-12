@@ -2,6 +2,7 @@ package com.zxy.wtlauncher;
 
 import android.animation.Animator;
 import android.app.Service;
+import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -19,10 +20,11 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextClock;
 import com.zxy.wtlauncher.adapter.TvGridAdapter;
+import com.zxy.wtlauncher.util.LogUtils;
 import com.zxy.wtlauncher.util.NetUtil;
 import com.zxy.wtlauncher.util.PreferenceManager;
+import com.zxy.wtlauncher.util.Util;
 import com.zxy.wtlauncher.view.L_Enjoy_Layout;
 import com.zxy.wtlauncher.view.L_IBiza_Layout;
 import com.zxy.wtlauncher.view.L_Settings_Layout;
@@ -31,10 +33,8 @@ import com.zxy.wtlauncher.view.L_Tools_Layout;
 import com.zxy.wtlauncher.view.L_VIP_Layout;
 import com.zxy.wtlauncher.view.LauncherItem;
 import com.zxy.wtlauncher.view.MyDialog;
-import com.zxy.wtlauncher.view.MyText;
 import com.zxy.wtlauncher.view.TvHorizontalGridView;
 import com.zxy.wtlauncher.view.TvMarqueeText;
-import com.zxy.wtlauncher.view.TvRelativeLayoutAsGroup;
 import com.zxy.wtlauncher.widget.MainUpView;
 import com.zxy.wtlauncher.widget.OpenEffectBridge;
 import com.zxy.wtlauncher.widget.ReflectItemView;
@@ -52,7 +52,7 @@ import java.util.List;
  * @author jachary.zhao on 2018/3/29.
  * @email zhaoyufei1223@gmail.com
  */
-public class MActivity extends BaseActivity implements View.OnFocusChangeListener{
+public class MActivity extends BaseActivity implements View.OnFocusChangeListener,View.OnClickListener{
     private List<View> viewList;
     private L_VIP_Layout l_vip_layout;
     private L_Enjoy_Layout l_enjoy_layout;
@@ -70,18 +70,9 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
     private MyPagerAdapter myPagerAdapter;
     private Context mContext;
     private int lastBottomFocus;
-    private TextClock tc_date,tc_time;
-    private LauncherItem[] items,itemsb;
     private PreferenceManager pf;
-    private TvRelativeLayoutAsGroup tvrel,tvrelb;
     private LauncherItem currentItem =null;
-    private TvMarqueeText mt_tip,address_tip;
-    private ImageView net_icon,tf_icon,usb_icon,test;
-    private Method systemProperties_get = null;
-    private final String ADULT = "adult_mode";
-    private final String MOVIE = "movie_mode";
-    private String mode ;
-    private MyText movie,adult;
+    private ImageView net_icon,tf_icon,usb_icon,stateBluetooth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,15 +80,15 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         setContentView(R.layout.z_main_layout);
         mContext=this;
         pf = PreferenceManager.getInstance(this,"zhaoyf");
-        mode = pf.getString("select_mode",MOVIE);
 
         Log.i("zxy", "isinstall ="+pf.getBoolean("isInstall"));
         if(!pf.getBoolean("isInstall")){
-//        	startInstall();
+//            toActivity(InstallActivity.class);
         }
         net_icon = (ImageView) findViewById(R.id.net_icon);
         tf_icon = (ImageView) findViewById(R.id.tf_icon);
         usb_icon = (ImageView) findViewById(R.id.usb_icon);
+        stateBluetooth=(ImageView)findViewById(R.id.ble_icon);
         checkExternalStorage();
         registeservers();
         if (null==savedInstanceState) {
@@ -111,6 +102,7 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
 
         ibizaLayout = (FrameLayout)findViewById(R.id.bottom_lin5);
         ibizaLayout.setOnFocusChangeListener(this);
+        ibizaLayout.setOnClickListener(this);
         for (int i=0;i<linearLayouts.length;i++){
             linearLayouts[i]=(LinearLayout)findViewById(refIds[i]);
             linearLayouts[i].setOnFocusChangeListener(this);
@@ -118,24 +110,26 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         initView();
     }
 
+
+
     private void addAppPkgName(){
 
-//        pf.putString("10","com.clickdigital.tvserver");//遙控器
-//        pf.putString("11", "com.droidlogic.appinstall");//應用安裝
-//        pf.putString("12", "com.hpplay.happyplay.aw");//樂播投屏
-//        pf.putString("13", "com.shafa.market");//沙發管家
-//        pf.putString("14", "com.droidlogic.miracast");//MIRACAST
-//        pf.putString("15", "clean");//一鍵清理
-//
-//        pf.putString("20","com.js.litv.home");//LiTV
-//        pf.putString("21", "com.qianxun.tvbox");//千寻
-//        pf.putString("22", "org.amotv.videolive");//AMOTV
-//        pf.putString("23", "com.qiyi.tv.tw");//爱奇艺
-//        pf.putString("24", "com.moretv.android");//云视听
-//
-//        pf.putString("30", "com.google.android.youtube");//YouTuBe
-//        pf.putString("31", "com.tencent.karaoketv");//全民K歌
-//        pf.putString("32", "com.android.music");//音樂
+        pf.putString("10","com.clickdigital.tvserver");//遙控器
+        pf.putString("11", "com.droidlogic.appinstall");//應用安裝
+        pf.putString("12", "com.hpplay.happyplay.aw");//樂播投屏
+        pf.putString("13", "com.shafa.market");//沙發管家
+        pf.putString("14", "com.droidlogic.miracast");//MIRACAST
+        pf.putString("15", "clean");//一鍵清理
+
+        pf.putString("20","com.js.litv.home");//LiTV
+        pf.putString("21", "com.qianxun.tvbox");//千寻
+        pf.putString("22", "org.amotv.videolive");//AMOTV
+        pf.putString("23", "com.qiyi.tv.tw");//爱奇艺
+        pf.putString("24", "com.moretv.android");//云视听
+
+        pf.putString("30", "com.google.android.youtube");//YouTuBe
+        pf.putString("31", "com.tencent.karaoketv");//全民K歌
+        pf.putString("32", "com.android.music");//音樂
 
 
         /**
@@ -150,27 +144,32 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
 
 
     }
-    private void initView(){
-        addAppPkgName();
 
-        l_enjoy_layout = new L_Enjoy_Layout(this);
-        l_iBiza_layout = new L_IBiza_Layout(this);
+
+
+    private void initView(){
+
         l_settings_layout = new L_Settings_Layout(this);
-        l_tv_layout = new L_TV_Layout(this);
-        l_vip_layout = new L_VIP_Layout(this);
         l_tools_layout = new L_Tools_Layout(this);
+        l_tv_layout = new L_TV_Layout(this);
+        l_enjoy_layout = new L_Enjoy_Layout(this);
+        l_vip_layout = new L_VIP_Layout(this);
+        l_iBiza_layout = new L_IBiza_Layout(this);
+
         l_enjoy_layout.initView();
         l_iBiza_layout.initView();
         l_settings_layout.initView();
         l_tv_layout.initView();
         l_vip_layout.initView();
         l_tools_layout.initView();
+
         viewList.add(l_settings_layout);
         viewList.add(l_tools_layout);
         viewList.add(l_tv_layout);
         viewList.add(l_enjoy_layout);
         viewList.add(l_vip_layout);
         viewList.add(l_iBiza_layout);
+
         viewpager.setAdapter(myPagerAdapter);
         linearLayouts[2].requestFocus();
         setBottomItemLayoutBg(2);
@@ -297,6 +296,16 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         }
     }
 
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+            case R.id.bottom_lin5:
+                toActivity(IBizaActivity.class);
+                break;
+        }
+    }
+
     class MyPagerAdapter extends PagerAdapter {
 
         @Override
@@ -354,36 +363,18 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         filter = new IntentFilter();
         filter.addAction("ider.install.over");
         registerReceiver(installReceiver, filter);
+
+        filter = new IntentFilter();
+        filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
+        registerReceiver(btReceiver, filter);
     }
 
 
     BroadcastReceiver installReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-//            pf.putString("12", "com.yolib.ibiza");
-//            pf.putString("11", "com.ibizatv.ch2");
 
-//            com.hpplay.happyplay.aw 投屏
-//            com.js.litv.home/.LiTVHomeActivity  LiTV
-            //com.qiyi.tv.tw 爱奇艺
-
-
-            pf.putString("10","com.js.litv.home");//LiTV
-            pf.putString("11", "com.qianxun.tvbox");//千寻
-            pf.putString("12", "org.amotv.videolive");//AMOTV
-            pf.putString("13", "com.qiyi.tv.tw");//爱奇艺
-            pf.putString("14", "com.moretv.android");//云视听
-
-
-//            pf.putString("2", "tvfan.tv");
-//            pf.putString("3", "com.moretv.android");//云视听
-//            pf.putString("4", "com.android.vending");
-//            pf.putString("5", "hdpfans.com");
-//            pf.putString("6", "com.iflytek.aichang.tv");
-//            pf.putString("7", "org.amotv.videolive");//AmoTV
-//            pf.putString("8", "com.google.android.youtube");
-
-//            pf.putString("9", "com.shafa.market");//沙发管家
+            addAppPkgName();
             l_enjoy_layout.initView();
             l_tv_layout.initView();
             l_tools_layout.initView();
@@ -620,6 +611,35 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         return super.onKeyDown(keyCode, event);
     }
 
+    BroadcastReceiver btReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            LogUtils.d(" intent.getAction() = "+ intent.getAction());
+            if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
+                int blueState = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, 0);
+                setBtState(blueState);
+            }
+        }
+    };
+
+    private void setBtState(int state) {
+        switch (state) {
+            case BluetoothAdapter.STATE_ON:
+                LogUtils.d(" BluetoothAdapter.STATE_ON ");
+                stateBluetooth.setImageResource(R.drawable.ble_on);
+                break;
+            case BluetoothAdapter.STATE_OFF:
+                LogUtils.d(" BluetoothAdapter.STATE_OFF ");
+                stateBluetooth.setImageResource(R.drawable.ble_off);
+                break;
+            case BluetoothAdapter.STATE_CONNECTED:
+                LogUtils.d(" BluetoothAdapter.STATE_CONNECTED ");
+                stateBluetooth.setImageResource(R.drawable.ble_on);
+                break;
+        }
+    }
+
 
     @Override
     protected void onDestroy() {
@@ -628,8 +648,7 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
             unregisterReceiver(netReceiver);
             unregisterReceiver(mediaReciever);
             unregisterReceiver(installReceiver);
-            //mt_tip.stopMarquee();
-            address_tip.stopMarquee();
+            unregisterReceiver(btReceiver);
         }catch(Exception e){
             e.printStackTrace();
         }

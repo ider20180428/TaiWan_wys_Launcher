@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
         registeservers();
        Log.i("zxy", "isinstall ="+pf.getBoolean("isInstall"));
         if(!pf.getBoolean("isInstall")){
-//        	startInstall();
+        	startInstall();
         }
         checkExternalStorage();
 		if (null==savedInstanceState) {

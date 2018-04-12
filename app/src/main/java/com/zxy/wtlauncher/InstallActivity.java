@@ -22,6 +22,7 @@ public class InstallActivity extends Activity implements IView {
 	
 	@Override
 	protected void onCreate(Bundle arg0) {
+
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_install);
 		
@@ -54,7 +55,7 @@ public class InstallActivity extends Activity implements IView {
 	public boolean onKeyDown(int arg0, KeyEvent arg1) {
 		
 		if(installOver) {
-			Intent intent = new Intent(this, MainActivity.class);
+			Intent intent = new Intent(this, MActivity.class);
 			startActivity(intent);
 			
 		} else {

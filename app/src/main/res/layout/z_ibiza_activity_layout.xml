@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:background="@drawable/mainbg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.zxy.wtlauncher.widget.MainLayout
+        android:id="@+id/main_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+        android:id="@+id/bu_bing_iv"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="-200dp"
+        android:layout_gravity="center"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+            android:clickable="true"
+        android:src="@drawable/zb"
+        android:layout_width="350dp"
+        android:layout_height="350dp" />
+        <ImageView
+            android:id="@+id/qi_bing_iv"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="200dp"
+            android:layout_gravity="center"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:clickable="true"
+            android:src="@drawable/zq"
+            android:layout_width="350dp"
+            android:layout_height="350dp" />
+        <ImageView
+            android:layout_marginLeft="30dp"
+            android:scaleType="fitXY"
+            android:layout_marginTop="-10dp"
+            android:src="@drawable/z_logo"
+            android:layout_width="150dp"
+            android:layout_height="100dp" />
+
+    </com.zxy.wtlauncher.widget.MainLayout>
+
+    <com.zxy.wtlauncher.widget.MainUpView
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

@@ -5,8 +5,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import com.zxy.wtlauncher.R;
-import com.zxy.wtlauncher.util.Util;
-import com.zxy.wtlauncher.widget.ReflectItemView;
 
 /**
  * @author jachary.zhao on 2018/3/29.
@@ -45,7 +43,6 @@ public class L_VIP_Layout extends BaseItemLayout implements IVIewLayout,
 
     @Override
     public void destory() {
-
 
     }
 }
