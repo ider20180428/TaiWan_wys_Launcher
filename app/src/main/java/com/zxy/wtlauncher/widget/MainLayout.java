@@ -1,6 +1,5 @@
 package com.zxy.wtlauncher.widget;
 
-import com.zxy.wtlauncher.widget.WidgetTvViewBring;
 
 import android.content.Context;
 import android.util.AttributeSet;

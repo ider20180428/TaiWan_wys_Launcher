@@ -15,4 +15,5 @@
     <color name="focus_color">#cffd4502</color>
     <color name="select_color">#487e5a00</color>
     <color name="unselect_color">#00ffffff</color>
+    <color name="ibiza_button2_color">#00CD00</color>
 </resources>

@@ -4,11 +4,8 @@ package com.zxy.wtlauncher.view;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-
 import com.zxy.wtlauncher.IBizaActivity;
 import com.zxy.wtlauncher.R;
-import com.zxy.wtlauncher.util.Util;
 import com.zxy.wtlauncher.widget.ReflectItemView;
 
 /**
@@ -20,7 +17,7 @@ public class L_IBiza_Layout extends BaseItemLayout implements IVIewLayout,
 
 
     private Context mContext;
-    private Button button;
+    private ReflectItemView reflectItemView,reflectItemView2;
 
 
     public L_IBiza_Layout(Context context) {
@@ -34,15 +31,12 @@ public class L_IBiza_Layout extends BaseItemLayout implements IVIewLayout,
 
     @Override
     public void onClick(View view) {
-
         switch (view.getId()){
-            case R.id.ibiza_btn:
 
+            case R.id.ibiza_btn2:
                 startActivity(IBizaActivity.class);
                 break;
         }
-
-
 
     }
 
@@ -53,9 +47,9 @@ public class L_IBiza_Layout extends BaseItemLayout implements IVIewLayout,
 
     @Override
     public void initView() {
-        button = (Button)findViewById(R.id.ibiza_btn);
-        button.setOnClickListener(this);
-
+        reflectItemView=(ReflectItemView) findViewById(R.id.ibiza_btn);
+        reflectItemView2=(ReflectItemView) findViewById(R.id.ibiza_btn2);
+        reflectItemView2.setOnClickListener(this);
     }
 
     @Override

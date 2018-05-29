@@ -40,7 +40,7 @@ public class L_TV_Layout extends BaseItemLayout implements IVIewLayout,
         super(context);
         this.mContext=context;
         setGravity(1);
-        addView(LayoutInflater.from(this.mContext).inflate(R.layout.z_tv_layout,
+        addView(LayoutInflater.from(this.mContext).inflate(R.layout.z_tv_layout_max,
                 null));
     }
 

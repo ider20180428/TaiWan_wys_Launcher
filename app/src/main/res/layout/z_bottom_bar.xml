@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zxy.wtlauncher.widget.MainLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:layout_gravity="bottom"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
     android:background="@color/bottom_layout_bg_color">
 
 
     <LinearLayout
         android:id="@+id/bottom_lin0"
         style="@style/bottom_bar_lin_style"
-        android:layout_marginLeft="-400dp"
         android:nextFocusLeft="@+id/bottom_lin5"
         android:orientation="vertical">
 
@@ -27,7 +27,6 @@
     <LinearLayout
         android:id="@+id/bottom_lin1"
         style="@style/bottom_bar_lin_style"
-        android:layout_marginLeft="-240dp"
         android:orientation="vertical">
 
         <ImageView
@@ -43,7 +42,6 @@
     <LinearLayout
         android:id="@+id/bottom_lin2"
         style="@style/bottom_bar_lin_style"
-        android:layout_marginLeft="-80dp"
         android:orientation="vertical">
 
         <ImageView
@@ -58,7 +56,6 @@
     <LinearLayout
         android:id="@+id/bottom_lin3"
         style="@style/bottom_bar_lin_style"
-        android:layout_marginRight="-80dp"
         android:orientation="vertical">
 
         <ImageView
@@ -73,7 +70,6 @@
     <LinearLayout
         android:id="@+id/bottom_lin4"
         style="@style/bottom_bar_lin_style"
-        android:layout_marginRight="-240dp"
         android:orientation="vertical">
 
         <ImageView
@@ -89,23 +85,22 @@
         android:id="@+id/bottom_lin5"
         style="@style/bottom_bar_lin_style"
         android:nextFocusRight="@+id/bottom_lin0"
-        android:layout_marginRight="-400dp"
        >
 
         <ImageView
             android:layout_gravity="center"
             android:layout_marginTop="-20dp"
             style="@style/bottom_item_image_style"
-            android:src="@drawable/zzb" />
+            android:src="@drawable/xianzhiji" />
 
         <TextView
             style="@style/category_text_style"
-            android:layout_marginBottom="20dp"
             android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp"
             android:text="IBiza" />
         <ImageView
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_gravity="bottom"
             android:src="@drawable/zza"
             android:layout_width="60dp"
@@ -118,7 +113,7 @@
         android:id="@+id/bottom_mainUpView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:upImageRes="@drawable/ic_launcher" />
+         />
 
 
-</com.zxy.wtlauncher.widget.MainLayout>
+</LinearLayout>

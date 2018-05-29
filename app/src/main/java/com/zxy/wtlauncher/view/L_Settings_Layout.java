@@ -18,8 +18,8 @@ public class L_Settings_Layout extends BaseItemLayout implements IVIewLayout,
 
 
     private Context mContext;
-    private int[] ref_ids={R.id.tv_0,R.id.tv_1,R.id.tv_2,R.id.tv_3,R.id.tv_4,R.id.tv_5,R.id.tv_6};
-    private ReflectItemView[]reflectItemViews=new ReflectItemView[7];
+    private int[] ref_ids={R.id.tv_0,R.id.tv_1};
+    private ReflectItemView[]reflectItemViews=new ReflectItemView[2];
     private ImageView imageView0,imageView1;
     private TextView textView0,textView1;
 
@@ -42,18 +42,7 @@ public class L_Settings_Layout extends BaseItemLayout implements IVIewLayout,
                 startActivity(AppsActivity.class);
 
                 break;
-            case R.id.tv_2:
 
-                break;
-            case R.id.tv_3:
-
-                break;
-            case R.id.tv_4:
-
-                break;
-            case R.id.tv_5:
-
-                break;
         }
     }
 
@@ -67,16 +56,13 @@ public class L_Settings_Layout extends BaseItemLayout implements IVIewLayout,
         for (int i=0;i<ref_ids.length;i++){
             reflectItemViews[i]=(ReflectItemView) findViewById(ref_ids[i]);
             reflectItemViews[i].setOnClickListener(this);
-            if (i>1){
-                reflectItemViews[i].setVisibility(View.INVISIBLE);
-            }
         }
         imageView0=(ImageView)findViewById(R.id.tv_iv0);
         imageView1=(ImageView)findViewById(R.id.tv_iv1);
         textView0=(TextView)findViewById(R.id.tv_tv0);
         textView1=(TextView)findViewById(R.id.tv_tv1);
-        imageView0.setImageResource(R.drawable.advance_set);
-        imageView1.setImageResource(R.drawable.all_apps);
+        imageView0.setImageResource(R.drawable.bottom_settings);
+        imageView1.setImageResource(R.drawable.apps);
         textView0.setText("系統設定");
         textView1.setText("程式列表");
     }

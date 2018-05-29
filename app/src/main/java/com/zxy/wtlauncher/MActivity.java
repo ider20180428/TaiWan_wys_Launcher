@@ -17,6 +17,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -147,6 +148,8 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
 
 
 
+
+
     private void initView(){
 
         l_settings_layout = new L_Settings_Layout(this);
@@ -175,10 +178,11 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         setBottomItemLayoutBg(2);
         for (View view : viewList) {
             MainUpView mainUpView = (MainUpView)view.findViewById(R.id.mainUpView1);
-            mainUpView.setUpRectResource(R.drawable.test_rectangle); //
+
+            mainUpView.setUpRectResource(R.drawable.ibiza_btn_retangle); //
             OpenEffectBridge bridget = (OpenEffectBridge) mainUpView
                     .getEffectBridge();
-            bridget.setTranDurAnimTime(200);
+            bridget.setTranDurAnimTime(250);
         }
         viewpager.getViewTreeObserver().addOnGlobalFocusChangeListener(
                 new ViewTreeObserver.OnGlobalFocusChangeListener() {
@@ -212,7 +216,7 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
                                         bridge.setVisibleWidget(false);
                                 }
                             });
-                            float scale = 1.08f;
+                            float scale = 1.1f;
 
                             mainUpView.setFocusView(newFocus, mOldFocus, scale);
                         }
@@ -250,6 +254,9 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+
+        l_iBiza_layout.findViewById(R.id.ibiza_btn).setOnClickListener(this);
+//        l_iBiza_layout.findViewById(R.id.ibiza_btn2).setOnClickListener(this);
     }
 
     private void setBottomItemLayoutBg(int position) {
@@ -300,9 +307,14 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
     public void onClick(View view) {
 
         switch (view.getId()){
-            case R.id.bottom_lin5:
-                toActivity(IBizaActivity.class);
+
+            case R.id.ibiza_btn:
+                viewpager.setCurrentItem(4);
+
                 break;
+//            case R.id.ibiza_btn2:
+//                toActivity(IBizaActivity.class);
+//                break;
         }
     }
 
