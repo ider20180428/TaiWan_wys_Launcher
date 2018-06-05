@@ -13,16 +13,40 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:background="@drawable/z_abc"
+        android:background="#ffffff"
         android:layout_marginBottom="180dp"
         android:layout_height="800dp">
 
-<!--        <ImageView
-            android:src="@drawable/z_abc"
+        <ImageView
+            android:src="@drawable/xianzhiji"
             android:scaleType="fitXY"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />-->
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+        <TextView
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="本頻道為限制級成人影視，未滿18歲請勿觀看。"
+            android:layout_marginTop="310dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textSize="28sp"
+            android:textColor="@color/white"
+            android:background="@drawable/ibiza_text_bg_shape"
+            android:text="請注意家中若有未滿18歲之孩童，務必使用安全密碼鎖，謝謝您的配合。"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="350dp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
         <com.zxy.wtlauncher.widget.ReflectItemView
             android:id="@+id/ibiza_btn"
             android:clickable="true"
@@ -40,6 +64,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="30sp"
+            android:textColor="#ffffff"
             android:textStyle="bold"
             android:text="未滿18歲" />
 
@@ -63,6 +88,7 @@
             android:gravity="center"
             android:textSize="30sp"
             android:textStyle="bold"
+            android:textColor="#ffffff"
             android:text="我已滿18歲" />
         </com.zxy.wtlauncher.widget.ReflectItemView>
 

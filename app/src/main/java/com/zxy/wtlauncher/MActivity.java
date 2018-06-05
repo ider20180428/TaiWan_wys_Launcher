@@ -84,7 +84,7 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
 
         Log.i("zxy", "isinstall ="+pf.getBoolean("isInstall"));
         if(!pf.getBoolean("isInstall")){
-//            toActivity(InstallActivity.class);
+            toActivity(InstallActivity.class);
         }
         net_icon = (ImageView) findViewById(R.id.net_icon);
         tf_icon = (ImageView) findViewById(R.id.tf_icon);
@@ -129,8 +129,10 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         pf.putString("24", "com.moretv.android");//云视听
 
         pf.putString("30", "com.google.android.youtube");//YouTuBe
-        pf.putString("31", "com.tencent.karaoketv");//全民K歌
-        pf.putString("32", "com.android.music");//音樂
+        pf.putString("31", "com.igs.mjstar31");//明星3缺1
+        pf.putString("32", "com.godgame.mj.android");//麻将神来也16张麻将
+        pf.putString("33", "com.tencent.karaoketv");//全民K歌
+        pf.putString("34", "tv.twitch.android.app");//Twitch
 
 
         /**
@@ -656,6 +658,12 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        l_enjoy_layout.destory();
+        l_iBiza_layout.destory();
+        l_settings_layout.destory();
+        l_tv_layout.destory();
+        l_vip_layout.destory();
+        l_tools_layout.destory();
         try{
             unregisterReceiver(netReceiver);
             unregisterReceiver(mediaReciever);

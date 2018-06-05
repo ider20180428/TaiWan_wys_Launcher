@@ -17,7 +17,7 @@
 
         <ImageView
             style="@style/bottom_item_image_style"
-            android:src="@drawable/bottom_settings" />
+            android:src="@drawable/abottom_settings" />
 
         <TextView
             style="@style/category_text_style"
@@ -46,7 +46,7 @@
 
         <ImageView
             style="@style/bottom_item_image_style"
-            android:src="@drawable/bottom_tv" />
+            android:src="@drawable/abottom_tv" />
 
         <TextView
             style="@style/category_text_style"
@@ -60,7 +60,7 @@
 
         <ImageView
             style="@style/bottom_item_image_style"
-            android:src="@drawable/bottom_enjoy" />
+            android:src="@drawable/abottom_enjoy" />
 
         <TextView
             style="@style/category_text_style"
@@ -74,7 +74,7 @@
 
         <ImageView
             style="@style/bottom_item_image_style"
-            android:src="@drawable/bottom_vip" />
+            android:src="@drawable/a_bottom_vip" />
 
         <TextView
             style="@style/category_text_style"
@@ -89,9 +89,9 @@
 
         <ImageView
             android:layout_gravity="center"
-            android:layout_marginTop="-20dp"
+            android:layout_marginTop="-25dp"
             style="@style/bottom_item_image_style"
-            android:src="@drawable/xianzhiji" />
+            android:src="@drawable/a18" />
 
         <TextView
             style="@style/category_text_style"

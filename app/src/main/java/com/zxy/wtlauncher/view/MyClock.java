@@ -31,11 +31,23 @@ public class MyClock extends LinearLayout {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.clock_layout, this);
 
+
         textViewTime = (TextView) findViewById(R.id.textViewTime);
         textViewDate = (TextView) findViewById(R.id.textViewDate);
         textViewWeek = (TextView) findViewById(R.id.textViewWeek);
 
         startThread();
+
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
 
     }
 

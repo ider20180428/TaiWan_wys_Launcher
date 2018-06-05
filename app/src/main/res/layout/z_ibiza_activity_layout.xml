@@ -45,11 +45,14 @@
         <ImageView
             android:scaleType="fitXY"
             android:src="@drawable/z_logo"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="30dp"
             android:layout_width="150dp"
             android:layout_height="100dp" />
+        <include layout="@layout/status_bar_layout"/>
 
     </com.zxy.wtlauncher.widget.MainLayout>
+
+
 
     <com.zxy.wtlauncher.widget.MainUpView
         android:id="@+id/mainUpView1"
