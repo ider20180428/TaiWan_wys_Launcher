@@ -22,6 +22,7 @@ import java.util.List;
 
 import com.zxy.wtlauncher.Application;
 import com.zxy.wtlauncher.R;
+import com.zxy.wtlauncher.util.Constant;
 
 /**
  * Created by Administrator on 2016/11/24.
@@ -51,7 +52,9 @@ public class MyPresenterImpl implements AppLicationViewDao.MyPresenter {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
+
                         apps = ApplicationUtil.loadAllApplication(context);
+                        apps.add(0,ApplicationUtil.doCleanApplication(context));//clean up
                         adapter = new ApplicationAdapter(apps);
                         activity.showAppList(adapter);
                         activity.showProgressbarandAppcount(getProgressAndAppcount(),getSDAvailableSize());
@@ -83,7 +86,7 @@ public class MyPresenterImpl implements AppLicationViewDao.MyPresenter {
         btnopen.setFocusable(true);
         btn.setClickable(true);
         btnopen.setClickable(true);
-         if(ApplicationUtil.isSystemApp(context,app)){
+         if(ApplicationUtil.isSystemApp(context,app)||app.getPackageName().equals(Constant.TOOL_CLEAN_MASTER)){
              btn.setVisibility(View.INVISIBLE);
              btn.setFocusable(false);
              FrameLayout.LayoutParams params =new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,50);
@@ -120,7 +123,7 @@ public class MyPresenterImpl implements AppLicationViewDao.MyPresenter {
     @Override
     public void OnApplicationClick(int position) {
         Log.i("presenter", "OnApplicationClick: "+position);
-           ApplicationUtil.startApp(context,apps.get(position));
+        ApplicationUtil.startApp(context,apps.get(position));
     }
 
     @Override
@@ -193,7 +196,12 @@ public class MyPresenterImpl implements AppLicationViewDao.MyPresenter {
             Application app = apps.get(position);
             viewHolder.iv.setImageDrawable(app.getIcon());
             viewHolder.tv.setText(app.getLabel());
-            viewHolder.head_tv.setText(app.getSize()+"M");
+
+            if (app.getPackageName().equals(Constant.TOOL_CLEAN_MASTER)){
+                viewHolder.head_tv.setText("0.08M");
+            }else {
+                viewHolder.head_tv.setText(app.getSize()+"M");
+            }
 //            Log.i("TAG", "getView: ----------"+isfirst);
 //            if(position==0){
 //                convertView.animate().scaleX(1.11f).scaleY(1.11f).setDuration(300).start();

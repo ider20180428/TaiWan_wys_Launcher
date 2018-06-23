@@ -3,14 +3,18 @@ package com.zxy.wtlauncher.view;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zxy.wtlauncher.Application;
 import com.zxy.wtlauncher.R;
 import com.zxy.wtlauncher.adapter.TvGridAdapter;
+import com.zxy.wtlauncher.util.Constant;
 import com.zxy.wtlauncher.util.PreferenceManager;
 import com.zxy.wtlauncher.util.Util;
 
@@ -145,7 +149,7 @@ public class BaseItemLayout extends RelativeLayout{
     public void showAdd(int i,String pkgTags){
         shortCutsStatus[i]=false;
         iconImageViews[i].setImageResource(R.drawable.add_apps);
-        appNameTextViews[i].setText("添加");
+        appNameTextViews[i].setText(mContext.getResources().getString(R.string.add));
         pf.delete(pkgTags);
     }
 

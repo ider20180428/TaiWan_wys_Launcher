@@ -81,31 +81,23 @@
             android:text="@string/bottom_vip_area" />
     </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/bottom_lin5"
         style="@style/bottom_bar_lin_style"
+        android:orientation="vertical"
         android:nextFocusRight="@+id/bottom_lin0"
        >
 
         <ImageView
-            android:layout_gravity="center"
-            android:layout_marginTop="-25dp"
             style="@style/bottom_item_image_style"
-            android:src="@drawable/a18" />
+            android:src="@drawable/zza"
+             />
 
         <TextView
             style="@style/category_text_style"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="20dp"
             android:text="IBiza" />
-        <ImageView
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="bottom"
-            android:src="@drawable/zza"
-            android:layout_width="60dp"
-            android:layout_height="60dp" />
-    </FrameLayout>
+
+    </LinearLayout>
 
     <!-- 最顶层边框 -->
 

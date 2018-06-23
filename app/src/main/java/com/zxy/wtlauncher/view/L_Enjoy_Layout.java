@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.zxy.wtlauncher.Application;
 import com.zxy.wtlauncher.R;
+import com.zxy.wtlauncher.util.Constant;
 import com.zxy.wtlauncher.widget.ReflectItemView;
 
 /**
@@ -131,11 +132,11 @@ public class L_Enjoy_Layout extends BaseItemLayout implements IVIewLayout,
 
                 }else {
                     iconImageViews[i].setImageResource(R.drawable.add_apps);
-                    appNameTextViews[i].setText("添加");
+                    appNameTextViews[i].setText(mContext.getResources().getString(R.string.add));
                 }
             }else {
                 iconImageViews[i].setImageResource(R.drawable.add_apps);
-                appNameTextViews[i].setText("添加");
+                appNameTextViews[i].setText(mContext.getResources().getString(R.string.add));
             }
 
         }
@@ -170,6 +171,9 @@ public class L_Enjoy_Layout extends BaseItemLayout implements IVIewLayout,
                 break;
             case R.id.tv_4:
                 showAdd(4,pkgTags[4]);
+                break;
+            case R.id.tv_5:
+                showAdd(5,pkgTags[5]);
                 break;
             case R.id.tv_6:
                 showAdd(6,pkgTags[6]);

@@ -3,12 +3,12 @@
 
     <string name="app_name">WTLauncher</string>
     <string name="action_settings">Settings</string>
-	<string name="add">add</string>
+	<string name="add">Add</string>
 	<drawable name="clr_normal">#c80808</drawable>
     <drawable name="clr_pressed">#2ba3ff</drawable>
     <string name="CleanMaster">clean master</string>
     <string name="CleanedMemory">Cleaned up ：%1$s MB Currently available memory：%2$s M</string>
-    <string name="add_app">select  your apps!!!!!!</string>
+    <string name="add_app">select  your apps</string>
     <string name="tip_app">Long press OK delete application，Click "+" add application!!!!!!</string>
     <string name="address_tip">Please visit the official website for the latest information : www.pinky-box.com</string>
     <string name="openapp">open</string>
@@ -21,13 +21,24 @@
     <string name="app_pro">Application</string>
     <string name="movie">Movie</string>
     <string name="adult">Adult</string>
-
+    <string name="clean_activity">Clean Up Memory</string>
     <string name="app_not_found">app is not installed</string>
-    <string name="bottom_setting">設定</string>
-    <string name="bottom_tools">工具</string>
-    <string name="bottom_tv">影視</string>
-    <string name="bottom_amusement">娛樂</string>
-    <string name="bottom_vip_area">會員專區</string>
+    <string name="bottom_setting">Settings</string>
+    <string name="ibiza">Ibiza</string>
+    <string name="bottom_tools">Tools</string>
+    <string name="bottom_tv">Movies/TV</string>
+    <string name="bottom_amusement">Entertainments</string>
+    <string name="bottom_vip_area">Member</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="constact_us">Contact Us</string>
+    <string name="settings">Settings</string>
+    <string name="apps">Applications</string>
 
 
 

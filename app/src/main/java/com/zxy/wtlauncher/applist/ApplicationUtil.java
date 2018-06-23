@@ -16,6 +16,9 @@ import java.util.Collections;
 import java.util.List;
 
 import com.zxy.wtlauncher.Application;
+import com.zxy.wtlauncher.R;
+import com.zxy.wtlauncher.StartActivity;
+import com.zxy.wtlauncher.util.Constant;
 
 @SuppressLint("NewApi")
 @SuppressWarnings("deprecation")
@@ -43,8 +46,14 @@ public class ApplicationUtil {
 		}
 		return apps;
 	}
-	
 
+	public static Application doCleanApplication(Context context) {
+		Application app = new Application();
+		app.setLabel(context.getString(R.string.clean_activity));
+		app.setIcon(context.getResources().getDrawable(R.drawable.onkeyclean));
+		app.setPackageName(Constant.TOOL_CLEAN_MASTER);
+		return app;
+	}
 
 
 
@@ -54,6 +63,10 @@ public class ApplicationUtil {
 		Intent intent = pm.getLaunchIntentForPackage(pkgName);
 		if (intent != null) {
 			context.startActivity(intent);
+		}else {
+			if (pkgName.equals(Constant.TOOL_CLEAN_MASTER)){
+				context.startActivity(new Intent(context, StartActivity.class));
+			}
 		}
 	}
 

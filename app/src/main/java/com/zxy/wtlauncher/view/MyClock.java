@@ -23,6 +23,9 @@ public class MyClock extends LinearLayout {
     static Calendar cal = Calendar.getInstance();
     private TextView textViewTime, textViewDate, textViewWeek;
 
+    private String[] weekDays=new String[7];
+    private int[]weekStringId={R.string.monday,R.string.tuesday,R.string.wednesday,
+    R.string.thursday,R.string.friday,R.string.saturday,R.string.saturday};
 
     public MyClock(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -31,7 +34,9 @@ public class MyClock extends LinearLayout {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.clock_layout, this);
 
-
+        for (int i=0;i<weekDays.length;i++){
+            weekDays[i]=context.getResources().getString(weekStringId[i]);
+        }
         textViewTime = (TextView) findViewById(R.id.textViewTime);
         textViewDate = (TextView) findViewById(R.id.textViewDate);
         textViewWeek = (TextView) findViewById(R.id.textViewWeek);
@@ -63,8 +68,7 @@ public class MyClock extends LinearLayout {
         return sdf_date.format(date);
     }
 
-    public static String getCurrentWeekDay(Date dt) {
-        String[] weekDays = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
+    public String getCurrentWeekDay(Date dt) {
         cal.setTime(dt);
         int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
         if (w < 0)

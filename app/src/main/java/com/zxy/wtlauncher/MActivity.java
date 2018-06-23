@@ -22,16 +22,19 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.zxy.wtlauncher.adapter.TvGridAdapter;
+import com.zxy.wtlauncher.util.Constant;
 import com.zxy.wtlauncher.util.LogUtils;
 import com.zxy.wtlauncher.util.NetUtil;
 import com.zxy.wtlauncher.util.PreferenceManager;
 import com.zxy.wtlauncher.util.Util;
 import com.zxy.wtlauncher.view.L_Enjoy_Layout;
 import com.zxy.wtlauncher.view.L_IBiza_Layout;
+import com.zxy.wtlauncher.view.L_IBiza_Layout2;
 import com.zxy.wtlauncher.view.L_Settings_Layout;
 import com.zxy.wtlauncher.view.L_TV_Layout;
 import com.zxy.wtlauncher.view.L_Tools_Layout;
 import com.zxy.wtlauncher.view.L_VIP_Layout;
+import com.zxy.wtlauncher.view.L_member_layout;
 import com.zxy.wtlauncher.view.LauncherItem;
 import com.zxy.wtlauncher.view.MyDialog;
 import com.zxy.wtlauncher.view.TvHorizontalGridView;
@@ -55,19 +58,18 @@ import java.util.List;
  */
 public class MActivity extends BaseActivity implements View.OnFocusChangeListener,View.OnClickListener{
     private List<View> viewList;
-    private L_VIP_Layout l_vip_layout;
+    private L_member_layout l_member_layout;
     private L_Enjoy_Layout l_enjoy_layout;
-    private L_IBiza_Layout l_iBiza_layout;
+    private L_IBiza_Layout2 l_iBiza_layout2;
     private L_Settings_Layout l_settings_layout;
     private L_TV_Layout l_tv_layout;
     private L_Tools_Layout l_tools_layout;
     private ViewPager viewpager;
     private OpenEffectBridge mSavebridge;
     private View mOldFocus;
-    private LinearLayout[]linearLayouts=new LinearLayout[5];
-    private FrameLayout ibizaLayout;
+    private LinearLayout[]linearLayouts=new LinearLayout[6];
     private int[]refIds={R.id.bottom_lin0,R.id.bottom_lin1,R.id.bottom_lin2,R.id.bottom_lin3,
-            R.id.bottom_lin4,};
+            R.id.bottom_lin4,R.id.bottom_lin5};
     private MyPagerAdapter myPagerAdapter;
     private Context mContext;
     private int lastBottomFocus;
@@ -101,9 +103,6 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         viewpager = (ViewPager) findViewById(R.id.main_layout_viewpager);
         myPagerAdapter = new MyPagerAdapter();
 
-        ibizaLayout = (FrameLayout)findViewById(R.id.bottom_lin5);
-        ibizaLayout.setOnFocusChangeListener(this);
-        ibizaLayout.setOnClickListener(this);
         for (int i=0;i<linearLayouts.length;i++){
             linearLayouts[i]=(LinearLayout)findViewById(refIds[i]);
             linearLayouts[i].setOnFocusChangeListener(this);
@@ -115,24 +114,29 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
 
     private void addAppPkgName(){
 
-        pf.putString("10","com.clickdigital.tvserver");//遙控器
-        pf.putString("11", "com.droidlogic.appinstall");//應用安裝
-        pf.putString("12", "com.hpplay.happyplay.aw");//樂播投屏
-        pf.putString("13", "com.shafa.market");//沙發管家
-        pf.putString("14", "com.droidlogic.miracast");//MIRACAST
-        pf.putString("15", "clean");//一鍵清理
+//        pf.putString("10","com.clickdigital.tvserver");//遙控器
+//        pf.putString("11", "com.droidlogic.appinstall");//應用安裝
+//        pf.putString("12", "com.hpplay.happyplay.aw");//樂播投屏
+//        pf.putString("13", "com.shafa.market");//沙發管家
+//        pf.putString("14", "com.droidlogic.miracast");//MIRACAST
+//        pf.putString("15", "clean");//一鍵清理
+//
+//        pf.putString("20","com.js.litv.home");//LiTV
+//        pf.putString("21", "com.qianxun.tvbox");//千寻
+//        pf.putString("22", "org.amotv.videolive");//AMOTV
+//        pf.putString("23", "com.qiyi.tv.tw");//爱奇艺
+//        pf.putString("24", "com.moretv.android");//云视听
+//        pf.putString("25", "com.l2tv.ltv");//com.l2tv.ltv
+//
+//        pf.putString("30", "com.google.android.youtube");//YouTuBe
+//        pf.putString("31", "com.igs.mjstar31");//明星3缺1
+//        pf.putString("32", "com.godgame.mj.android");//麻将神来也16张麻将
+//        pf.putString("33", "com.tencent.karaoketv");//全民K歌
+//        pf.putString("34", "tv.twitch.android.app");//Twitch
+        pf.putString("10",Constant.APP_INSTALL);
+        pf.putString("20",Constant.APP_NETFILX);
+        pf.putString("30",Constant.APP_YOUTUBE);
 
-        pf.putString("20","com.js.litv.home");//LiTV
-        pf.putString("21", "com.qianxun.tvbox");//千寻
-        pf.putString("22", "org.amotv.videolive");//AMOTV
-        pf.putString("23", "com.qiyi.tv.tw");//爱奇艺
-        pf.putString("24", "com.moretv.android");//云视听
-
-        pf.putString("30", "com.google.android.youtube");//YouTuBe
-        pf.putString("31", "com.igs.mjstar31");//明星3缺1
-        pf.putString("32", "com.godgame.mj.android");//麻将神来也16张麻将
-        pf.putString("33", "com.tencent.karaoketv");//全民K歌
-        pf.putString("34", "tv.twitch.android.app");//Twitch
 
 
         /**
@@ -158,22 +162,21 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         l_tools_layout = new L_Tools_Layout(this);
         l_tv_layout = new L_TV_Layout(this);
         l_enjoy_layout = new L_Enjoy_Layout(this);
-        l_vip_layout = new L_VIP_Layout(this);
-        l_iBiza_layout = new L_IBiza_Layout(this);
+        l_member_layout = new L_member_layout(this);
+        l_iBiza_layout2 = new L_IBiza_Layout2(this);
 
         l_enjoy_layout.initView();
-        l_iBiza_layout.initView();
+        l_iBiza_layout2.initView();
         l_settings_layout.initView();
         l_tv_layout.initView();
-        l_vip_layout.initView();
         l_tools_layout.initView();
 
         viewList.add(l_settings_layout);
         viewList.add(l_tools_layout);
         viewList.add(l_tv_layout);
         viewList.add(l_enjoy_layout);
-        viewList.add(l_vip_layout);
-        viewList.add(l_iBiza_layout);
+        viewList.add(l_member_layout);
+        viewList.add(l_iBiza_layout2);
 
         viewpager.setAdapter(myPagerAdapter);
         linearLayouts[2].requestFocus();
@@ -181,10 +184,19 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         for (View view : viewList) {
             MainUpView mainUpView = (MainUpView)view.findViewById(R.id.mainUpView1);
 
-            mainUpView.setUpRectResource(R.drawable.ibiza_btn_retangle); //
+//            if (view==l_iBiza_layout){
+//                mainUpView.setUpRectResource(R.drawable.ibiza_btn_retangles); //
+//            }else {
+//                mainUpView.setUpRectResource(R.drawable.ibiza_btn_retangle); //
+//            }
+//            mainUpView.setUpRectResource(R.drawable.ibiza_btn_retangle);
+            mainUpView.setUpRectResource(R.drawable.test_rectangle); // 设置移动边框的图片
+//        mainUpView1.setDrawUpRectPadding(new Rect(25, 18, 25, 18)); // 边框图片设置间距.
+//            mainUpView.setShadowResource(R.drawable.item_shadow); // 设置移动边框的阴影
+
             OpenEffectBridge bridget = (OpenEffectBridge) mainUpView
                     .getEffectBridge();
-            bridget.setTranDurAnimTime(250);
+            bridget.setTranDurAnimTime(200);
         }
         viewpager.getViewTreeObserver().addOnGlobalFocusChangeListener(
                 new ViewTreeObserver.OnGlobalFocusChangeListener() {
@@ -257,23 +269,24 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
             }
         });
 
-        l_iBiza_layout.findViewById(R.id.ibiza_btn).setOnClickListener(this);
-//        l_iBiza_layout.findViewById(R.id.ibiza_btn2).setOnClickListener(this);
     }
 
     private void setBottomItemLayoutBg(int position) {
         if (position != lastBottomFocus){
-            if (position==5){
-                ibizaLayout.setSelected(true);
-                linearLayouts[lastBottomFocus].setSelected(false);
-            }else {
-                linearLayouts[position].setSelected(true);
-                if (lastBottomFocus==5){
-                    ibizaLayout.setSelected(false);
-                }else {
-                    linearLayouts[lastBottomFocus].setSelected(false);
-                }
-            }
+//            if (position==5){
+//                ibizaLayout.setSelected(true);
+//                linearLayouts[lastBottomFocus].setSelected(false);
+//            }else {
+//                linearLayouts[position].setSelected(true);
+//                linearLayouts[lastBottomFocus].setSelected(false);
+//                if (lastBottomFocus==5){
+//                    ibizaLayout.setSelected(false);
+//                }else {
+//                    linearLayouts[lastBottomFocus].setSelected(false);
+//                }
+//            }
+            linearLayouts[position].setSelected(true);
+            linearLayouts[lastBottomFocus].setSelected(false);
             lastBottomFocus = position;
         }
     }
@@ -308,16 +321,7 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()){
 
-            case R.id.ibiza_btn:
-                viewpager.setCurrentItem(4);
-
-                break;
-//            case R.id.ibiza_btn2:
-//                toActivity(IBizaActivity.class);
-//                break;
-        }
     }
 
     class MyPagerAdapter extends PagerAdapter {
@@ -659,10 +663,9 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
     protected void onDestroy() {
         super.onDestroy();
         l_enjoy_layout.destory();
-        l_iBiza_layout.destory();
+        l_iBiza_layout2.destory();
         l_settings_layout.destory();
         l_tv_layout.destory();
-        l_vip_layout.destory();
         l_tools_layout.destory();
         try{
             unregisterReceiver(netReceiver);

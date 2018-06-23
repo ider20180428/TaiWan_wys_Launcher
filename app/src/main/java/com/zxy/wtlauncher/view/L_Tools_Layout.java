@@ -9,8 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.zxy.wtlauncher.Application;
 import com.zxy.wtlauncher.R;
-import com.zxy.wtlauncher.StartActivity;
-import com.zxy.wtlauncher.util.Util;
+import com.zxy.wtlauncher.util.Constant;
 import com.zxy.wtlauncher.widget.ReflectItemView;
 
 /**
@@ -21,7 +20,6 @@ public class L_Tools_Layout extends BaseItemLayout implements IVIewLayout,
         View.OnFocusChangeListener,View.OnClickListener,View.OnLongClickListener{
 
 
-    private Context mContext;
     private int[] ref_ids={R.id.tv_0,R.id.tv_1,R.id.tv_2,R.id.tv_3,R.id.tv_4,R.id.tv_5,R.id.tv_6};
     private ReflectItemView[]reflectItemViews=new ReflectItemView[7];
 
@@ -81,8 +79,12 @@ public class L_Tools_Layout extends BaseItemLayout implements IVIewLayout,
                 }
                 break;
             case R.id.tv_5:
-                startActivity(StartActivity.class);//一键清理
-
+//                startActivity(StartActivity.class);//一键清理
+                if (shortCutsStatus[5]){
+                    launchApp(componentNames[5]);
+                }else {
+                    showAddDialog(5,shortCutsTag[5],pkgTags[5],getlocalApps(),mContext);
+                }
                 break;
             case R.id.tv_6:
                 if (shortCutsStatus[6]){
@@ -129,19 +131,22 @@ public class L_Tools_Layout extends BaseItemLayout implements IVIewLayout,
                     }else {
                         componentNames[i]=new ComponentName(pkgName,"");
                     }
+                    if (app.getPackageName().equals(Constant.APP_INSTALL)){
+                        iconImageViews[i].setImageDrawable(getResources().getDrawable(R.drawable.app_install));
+                    }
 
                 }else {
                     if (pkgName.equals("clean")){
-                        iconImageViews[i].setImageResource(R.drawable.onkeyclean);
-                        appNameTextViews[i].setText("一鍵清理");
+//                        iconImageViews[i].setImageResource(R.drawable.onkeyclean);
+//                        appNameTextViews[i].setText("一鍵清理");
                     }else {
                         iconImageViews[i].setImageResource(R.drawable.add_apps);
-                        appNameTextViews[i].setText("添加");
+                        appNameTextViews[i].setText(mContext.getResources().getString(R.string.add));
                     }
                 }
             }else {
                 iconImageViews[i].setImageResource(R.drawable.add_apps);
-                appNameTextViews[i].setText("添加");
+                appNameTextViews[i].setText(mContext.getResources().getString(R.string.add));
             }
         }
     }
@@ -161,7 +166,7 @@ public class L_Tools_Layout extends BaseItemLayout implements IVIewLayout,
     public boolean onLongClick(View view) {
         switch (view.getId()){
             case R.id.tv_0:
-                showAdd(0,pkgTags[0]);
+//                showAdd(0,pkgTags[0]);
                 break;
             case R.id.tv_1:
                 showAdd(1,pkgTags[1]);
@@ -174,6 +179,9 @@ public class L_Tools_Layout extends BaseItemLayout implements IVIewLayout,
                 break;
             case R.id.tv_4:
                 showAdd(4,pkgTags[4]);
+                break;
+            case R.id.tv_5:
+                showAdd(5,pkgTags[5]);
                 break;
             case R.id.tv_6:
                showAdd(6,pkgTags[6]);

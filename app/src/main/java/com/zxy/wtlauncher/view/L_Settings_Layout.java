@@ -63,8 +63,8 @@ public class L_Settings_Layout extends BaseItemLayout implements IVIewLayout,
         textView1=(TextView)findViewById(R.id.tv_tv1);
         imageView0.setImageResource(R.drawable.abottom_settings);
         imageView1.setImageResource(R.drawable.aapps);
-        textView0.setText("系統設定");
-        textView1.setText("程式列表");
+        textView0.setText(getResources().getString(R.string.settings));
+        textView1.setText(getResources().getString(R.string.apps));
     }
 
     @Override

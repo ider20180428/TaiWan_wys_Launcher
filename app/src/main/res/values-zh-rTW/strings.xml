@@ -6,10 +6,10 @@
 	<string name="add">添加應用</string>
 	<drawable name="clr_normal">#c80808</drawable>
     <drawable name="clr_pressed">#2ba3ff</drawable>
-    <string name="CleanMaster">壹鍵加速</string>
+    <string name="CleanMaster">一鍵加速</string>
     <string name="CleanedMemory">已清理 ：%1$s MB 當前可用內存為：%2$s M</string>
     <string name="add_app">請選擇喜歡的應用!!!!!!</string>
-    <string name="tip_app">長按OK刪除應用，點擊“+”添加應用!!!!!!</string>
+    <string name="tip_app">點擊“+”添加應用，長按OK鍵刪除應用快捷方式</string>
     <string name="address_tip">最新優惠及更新訊息，請上官方網站查詢 www.pinky-box.com</string>
     <string name="openapp">打開</string>
      <string name="delete">刪除</string>
@@ -24,6 +24,25 @@
 
     <string name="app_not_found">應用程序未安裝</string>
     <string name="bottom_setting">設定</string>
+
+    <string name="clean_activity">一鍵清理</string>
+    <string name="bottom_tools">工具</string>
+    <string name="bottom_tv">影視</string>
+    <string name="bottom_amusement">娛樂</string>
+    <string name="bottom_vip_area">會員專區</string>
+
+    <string name="monday">星期一</string>
+    <string name="tuesday">星期二</string>
+    <string name="wednesday">星期三</string>
+    <string name="thursday">星期四</string>
+    <string name="friday">星期五</string>
+    <string name="saturday">星期六</string>
+    <string name="sunday">星期日</string>
+
+    <string name="constact_us">聯絡我們</string>
+    <string name="settings">設定</string>
+    <string name="apps">應用程序</string>
+
 
 
 

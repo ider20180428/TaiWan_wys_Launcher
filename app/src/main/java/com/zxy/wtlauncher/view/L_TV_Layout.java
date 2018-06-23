@@ -134,11 +134,11 @@ public class L_TV_Layout extends BaseItemLayout implements IVIewLayout,
                     }
                 }else {
                     iconImageViews[i].setImageResource(R.drawable.add_apps);
-                    appNameTextViews[i].setText("添加");
+                    appNameTextViews[i].setText(mContext.getResources().getString(R.string.add));
                 }
             }else {
                 iconImageViews[i].setImageResource(R.drawable.add_apps);
-                appNameTextViews[i].setText("添加");
+                appNameTextViews[i].setText(mContext.getResources().getString(R.string.add));
             }
 
         }
