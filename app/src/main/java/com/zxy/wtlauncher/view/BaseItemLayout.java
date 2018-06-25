@@ -41,7 +41,7 @@ public class BaseItemLayout extends RelativeLayout{
     public BaseItemLayout(Context context) {
         super(context);
         this.mContext=context;
-        pf=PreferenceManager.getInstance(mContext,"zhaoyf");
+        pf=PreferenceManager.getInstance(mContext,"fla");
     }
 
 

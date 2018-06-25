@@ -17,8 +17,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.zxy.wtlauncher.adapter.TvGridAdapter;
@@ -26,14 +24,11 @@ import com.zxy.wtlauncher.util.Constant;
 import com.zxy.wtlauncher.util.LogUtils;
 import com.zxy.wtlauncher.util.NetUtil;
 import com.zxy.wtlauncher.util.PreferenceManager;
-import com.zxy.wtlauncher.util.Util;
 import com.zxy.wtlauncher.view.L_Enjoy_Layout;
-import com.zxy.wtlauncher.view.L_IBiza_Layout;
 import com.zxy.wtlauncher.view.L_IBiza_Layout2;
 import com.zxy.wtlauncher.view.L_Settings_Layout;
 import com.zxy.wtlauncher.view.L_TV_Layout;
 import com.zxy.wtlauncher.view.L_Tools_Layout;
-import com.zxy.wtlauncher.view.L_VIP_Layout;
 import com.zxy.wtlauncher.view.L_member_layout;
 import com.zxy.wtlauncher.view.LauncherItem;
 import com.zxy.wtlauncher.view.MyDialog;
@@ -82,7 +77,8 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.z_main_layout);
         mContext=this;
-        pf = PreferenceManager.getInstance(this,"zhaoyf");
+        registeservers();
+        pf = PreferenceManager.getInstance(this,"fla");
 
         Log.i("zxy", "isinstall ="+pf.getBoolean("isInstall"));
         if(!pf.getBoolean("isInstall")){
@@ -93,7 +89,7 @@ public class MActivity extends BaseActivity implements View.OnFocusChangeListene
         usb_icon = (ImageView) findViewById(R.id.usb_icon);
         stateBluetooth=(ImageView)findViewById(R.id.ble_icon);
         checkExternalStorage();
-        registeservers();
+
         if (null==savedInstanceState) {
             Intent intent = new Intent("com.ider.launchermovie.MY_BROADCAST");
             sendBroadcast(intent);

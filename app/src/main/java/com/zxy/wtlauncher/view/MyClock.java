@@ -24,8 +24,8 @@ public class MyClock extends LinearLayout {
     private TextView textViewTime, textViewDate, textViewWeek;
 
     private String[] weekDays=new String[7];
-    private int[]weekStringId={R.string.monday,R.string.tuesday,R.string.wednesday,
-    R.string.thursday,R.string.friday,R.string.saturday,R.string.saturday};
+    private int[]weekStringId={R.string.sunday,R.string.monday,R.string.tuesday,R.string.wednesday,
+    R.string.thursday,R.string.friday,R.string.saturday};
 
     public MyClock(Context context, AttributeSet attrs) {
         super(context, attrs);

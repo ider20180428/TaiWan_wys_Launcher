@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.zxy.wtlauncher.Application;
 import com.zxy.wtlauncher.R;
 import com.zxy.wtlauncher.widget.ReflectItemView;
@@ -23,8 +22,6 @@ public class L_IBiza_Layout2 extends BaseItemLayout implements IVIewLayout,
     private ReflectItemView ibiza1_Ref,ibiza2_Ref;
     private ImageView ibiza1_imageview,ibiza2_imageview;
     private TextView ibiza1_Textview,ibiza2_Textview;
-    private Application app1;
-    private Application app2;
 
 
     public L_IBiza_Layout2(Context context) {
@@ -57,8 +54,8 @@ public class L_IBiza_Layout2 extends BaseItemLayout implements IVIewLayout,
 
     @Override
     public void initView() {
-        app1=Application.doApplication("com.yolib.ibiza",mContext);
-        app2=Application.doApplication("com.ibizatv.ch2",mContext);
+        Application app1=Application.doApplication("com.yolib.ibiza",mContext);
+        Application app2=Application.doApplication("com.ibizatv.ch2",mContext);
         ibiza1_Ref = (ReflectItemView)findViewById(R.id.ibiza1_ref);
         ibiza2_Ref = (ReflectItemView)findViewById(R.id.ibiza2_ref);
         ibiza1_Ref.setOnClickListener(this);
@@ -71,10 +68,19 @@ public class L_IBiza_Layout2 extends BaseItemLayout implements IVIewLayout,
 
 
 
-        ibiza1_imageview.setImageDrawable(app1.getIcon());
-        ibiza2_imageview.setImageDrawable(app2.getIcon());
-        ibiza1_Textview.setText(app1.getLabel());
-        ibiza2_Textview.setText(app2.getLabel());
+        if(null!=app1){
+            ibiza1_imageview.setImageDrawable(app1.getIcon());
+            ibiza1_Textview.setText(app1.getLabel());
+        }
+        if (null!=app2){
+            ibiza2_imageview.setImageDrawable(app2.getIcon());
+            ibiza2_Textview.setText(app2.getLabel());
+        }
+
+
+
+
+
     }
 
     @Override
